@@ -53,13 +53,17 @@ extern int lineNumber; //!< External line counter
 
 /*! \name REGULAR DEFINITIONS  */
 
-DIGIT  [0-9] 
+DIGIT    [0-9] 
 
-LETTER [a-zA-Z]
+LETTER   [a-zA-Z]
 
-NUMBER1 {DIGIT}+\.?
+NUMBER1  {DIGIT}+\.?
 
-NUMBER2 {DIGIT}*\.{DIGIT}+
+NUMBER2  {DIGIT}*\.{DIGIT}+
+
+EXPONENT ([eE][+\-]?{DIGIT}+)
+
+NUMBER   ({NUMBER1}|{NUMBER2}){EXPONENT}?
 
 IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 
@@ -92,13 +96,13 @@ IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 			return COMMA;
 		}
 
-{NUMBER1}|{NUMBER2}  {
-					  /* MODIFIED in example 4 */
-					  /* Conversion of type and sending of the numerical value to the parser */
-					   yylval.number = atof(yytext); 
+{NUMBER}  	{
+				/* MODIFIED in example 4 */
+				/* Conversion of type and sending of the numerical value to the parser */
+				yylval.number = atof(yytext); 
 
-                       return NUMBER; 
-                      }
+				return NUMBER; 
+			}
 
 
 {IDENTIFIER}   		 {
