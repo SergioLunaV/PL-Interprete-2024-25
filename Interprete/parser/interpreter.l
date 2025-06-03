@@ -174,9 +174,9 @@ IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 ":=" 	{ return ASSIGNMENT; }		/* NEW in example 7, modified by Sergio */
 
 
-"=="	{ return EQUAL; }			/* NEW in example 15 */
+"="	    { return EQUAL; }			/* NEW in example 15 */
 
-"!="	{ return NOT_EQUAL; }		/* NEW in example 15 */
+"<>"	{ return NOT_EQUAL; }		/* NEW in example 15 */
 
 ">="	{ return GREATER_OR_EQUAL; }/* NEW in example 15 */
 
