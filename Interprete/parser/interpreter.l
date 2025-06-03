@@ -176,12 +176,6 @@ IDENTIFIER  {LETTER}({LETTER}|{DIGIT})*
 
 "<"		{ return LESS_THAN; }		/* NEW in example 15 */
 
-"!"		{ return NOT; }				/* NEW in example 15 */
-
-"||"	{ return OR; }				/* NEW in example 15 */
-
-"&&"	{ return AND; }				/* NEW in example 15 */
-
 "{"		{ return LEFTCURLYBRACKET; } 	/* NEW in example 17 */
 
 "}"		{ return RIGHTCURLYBRACKET; }	/* NEW in example 17 */

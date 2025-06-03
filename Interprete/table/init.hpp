@@ -75,6 +75,9 @@ static struct {
 						{"if",	  IF},   	// NEW in example 17
 						{"else",  ELSE}, 	// NEW in example 17
 						{"while", WHILE},	// NEW in example 17
+						{"or",    OR},		// Added by Sergio
+						{"and",   AND},		// Added by Sergio
+						{"not",   NOT},		// Added by Sergio
 	                    {"",      0}
 	                   };
 
