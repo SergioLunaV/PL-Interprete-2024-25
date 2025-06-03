@@ -102,6 +102,12 @@ IDENTIFIER  {LETTER}({LETTER}|{DIGIT})*
 
 
 {IDENTIFIER}   		 {
+
+						for (int i=0; yytext[i] != '\0'; i++)
+						{
+							yytext[i] = tolower(yytext[i]);
+						}
+
 						 /* NEW in example 7 */
 						 std::string identifier(yytext);
 
