@@ -61,7 +61,7 @@ NUMBER1 {DIGIT}+\.?
 
 NUMBER2 {DIGIT}*\.{DIGIT}+
 
-IDENTIFIER  {LETTER}({LETTER}|{DIGIT})*
+IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 
 /* NEW in example 3 */
 /* STATE  */
@@ -212,7 +212,7 @@ IDENTIFIER  {LETTER}({LETTER}|{DIGIT})*
 									yymore();  
 								}
 
-<ERROR>[^0-9+\-*/()\^% \t\n\;a-zA-Z=<>!&]	{ /* MODIFIED in examples 5, 7, 15 */
+<ERROR>[^0-9+\-*/()\^% \t\n\;a-zA-Z:=<>!]	{ /* MODIFIED in examples 5, 7, 15, and by Sergio */
 								  /* NEW in example 3 */
 								  /* 
 									The current value of yytext 
