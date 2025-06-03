@@ -167,7 +167,7 @@ IDENTIFIER  {LETTER}({LETTER}|{DIGIT})*
 
 "^"	    { return POWER; }			/* NEW in example 5 */
 
-"=" 	{ return ASSIGNMENT; }		/* NEW in example 7 */
+":=" 	{ return ASSIGNMENT; }		/* NEW in example 7, modified by Sergio */
 
 
 "=="	{ return EQUAL; }			/* NEW in example 15 */
