@@ -288,7 +288,7 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Create a new empty statement node
 		$$ = new lp::EmptyStmt(); 
 	  }
-	| asgn  SEMICOLON
+	| asgn SEMICOLON
 	  {
 		// Default action
 		// $$ = $1;

@@ -111,7 +111,25 @@ int main(int argc, char *argv[])
  */
  if (argc == 2) 
  {
+    // Added by Sergio
+    // Check if the file has the extension ".p"
+    std::string fileName = argv[1];
+    if(fileName.substr(fileName.length() - 2) != ".p" || fileName.length() < 2)
+    {
+        std::cout << "Warning: The file should have the extension \".p\".\n";
+        return 1;
+    }
+
      yyin = fopen(argv[1],"r");
+
+    // Added by Sergio
+    // Check if the file exists
+    if (yyin == NULL)
+    {
+        std::cerr << "Error: The file \"" << argv[1] << "\" could not be oppened.\n";
+        return 1;
+    }
+    //
 
 	 interactiveMode = false;
  }
