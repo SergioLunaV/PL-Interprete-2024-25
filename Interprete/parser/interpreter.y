@@ -173,7 +173,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT READ IF ELSE THEN ENDIF WHILE 
+%token PRINT READ IF ELSE THEN ENDIF WHILE DO ENDWHILE
 
 /* NEW in example 17 */
 %token LEFTCURLYBRACKET RIGHTCURLYBRACKET
@@ -361,10 +361,10 @@ if:	/* Simple conditional statement */
 ;
 
 	/*  NEW in example 17 */
-while:  WHILE controlSymbol cond stmt 
+while:  WHILE controlSymbol cond DO stmt ENDWHILE
 		{
 			// Create a new while statement node
-			$$ = new lp::WhileStmt($3, $4);
+			$$ = new lp::WhileStmt($3, $5);
 
 			// To control the interactive mode
 			control--;
