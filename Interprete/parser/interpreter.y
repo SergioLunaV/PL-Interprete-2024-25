@@ -262,7 +262,7 @@ stmtlist:  /* empty: epsilon rule */
 						it != $$->end(); 
 						it++)
 				{
-					(*it)->printAST();
+					// (*it)->printAST();
 					(*it)->evaluate();
 					
 				}
