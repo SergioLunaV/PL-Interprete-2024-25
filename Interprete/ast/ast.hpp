@@ -1566,7 +1566,7 @@ class EmptyStmt : public Statement
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// NEW in example 17
+// NEW in example 17 and modified by Sergio
 
 /*!	
   \class   IfStmt
@@ -1578,36 +1578,36 @@ class IfStmt : public Statement
 {
  private:
   ExpNode *_cond;    //!< Condicion of the if statement
-  Statement *_stmt1; //!< Statement of the consequent
-  Statement *_stmt2; //!< Statement of the alternative
+  std::list<Statement *> *_stmts1;  //!< List of statements of the consequent
+  std::list<Statement *> *_stmts2;  //!< List of statements of the alternative
 
   public:
 /*!		
 	\brief Constructor of Single IfStmt (without alternative)
 	\param condition: ExpNode of the condition
-	\param statement1: Statement of the consequent
+	\param statements1: Statements of the consequent
 	\post  A new IfStmt is created with the parameters
 */
-  IfStmt(ExpNode *condition, Statement *statement1)
+  IfStmt(ExpNode *condition, std::list<Statement *> *stmtList1)
 	{
 		this->_cond = condition;
-		this->_stmt1 = statement1;
-		this->_stmt2 = NULL;
+		this->_stmts1 = stmtList1;
+		this->_stmts2 = NULL;
 	}
 
 
 /*!		
 	\brief Constructor of Compound IfStmt (with alternative)
 	\param condition: ExpNode of the condition
-	\param statement1: Statement of the consequent
-	\param statement2: Statement of the alternative
+	\param statement1: List of statements of the consequent
+	\param statement2: List of statements of the alternative
 	\post  A new IfStmt is created with the parameters
 */
-  IfStmt(ExpNode *condition, Statement *statement1, Statement *statement2)
+  IfStmt(ExpNode *condition, std::list<Statement *> *stmtList1, std::list<Statement *> *stmtList2)
 	{
 		this->_cond = condition;
-		this->_stmt1 = statement1;
-		this->_stmt2 = statement2;
+		this->_stmts1 = stmtList1;
+		this->_stmts2 = stmtList2;
 	}
 
 

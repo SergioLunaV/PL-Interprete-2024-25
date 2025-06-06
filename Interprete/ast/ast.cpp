@@ -1300,10 +1300,12 @@ void lp::EmptyStmt::evaluate()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// NEW in example 17
+// NEW in example 17 and modified by Sergio
 
 void lp::IfStmt::printAST() 
 {
+  std::list<Statement *>::iterator stmtIter;
+  
   std::cout << "IfStmt: "  << std::endl;
   // Condition
   std::cout << "\t";
@@ -1311,14 +1313,21 @@ void lp::IfStmt::printAST()
 
   // Consequent
   std::cout << "\t";
-  this->_stmt1->printAST();
+  for (stmtIter = this->_stmts1->begin(); stmtIter != this->_stmts1->end(); stmtIter++)
+  {
+	 (*stmtIter)->printAST();
+  }
 
  // The alternative is printASTed if exists
-  if (this->_stmt2 != NULL)
+  if (this->_stmts2 != NULL)
      {  
        std::cout << "\t";
-	   this->_stmt2->printAST();
-     }
+	   for (stmtIter = this->_stmts2->begin(); stmtIter != this->_stmts2->end(); stmtIter++)
+	   {
+		 (*stmtIter)->printAST();
+	   }
+
+	}
 
   std::cout << std::endl;
 }
@@ -1326,14 +1335,21 @@ void lp::IfStmt::printAST()
 
 void lp::IfStmt::evaluate() 
 {
+	std::list<Statement *>::iterator stmtIter;
+
    // If the condition is true,
-	if (this->_cond->evaluateBool() == true )
-     // the consequent is run 
-	  this->_stmt1->evaluate();
+	if (this->_cond->evaluateBool() == true)
+	{ // the consequent is run 
+      for (stmtIter = this->_stmts1->begin(); stmtIter != this->_stmts1->end(); stmtIter++)
+	    (*stmtIter)->evaluate();
+	}
 
     // Otherwise, the alternative is run if exists
-	else if (this->_stmt2 != NULL)
-		  this->_stmt2->evaluate();
+	else if (this->_stmts2 != NULL)
+	{ 
+	  for (stmtIter = this->_stmts2->begin(); stmtIter != this->_stmts2->end(); stmtIter++)
+	    (*stmtIter)->evaluate();
+	}
 }
 
 

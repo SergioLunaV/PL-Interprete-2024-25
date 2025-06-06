@@ -340,7 +340,7 @@ controlSymbol:  /* Epsilon rule*/
 
 	/*  NEW in example 17 */
 if:	/* Simple conditional statement */
-	IF controlSymbol cond THEN stmt ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
+	IF controlSymbol cond THEN stmtlist ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
     {
 		// Create a new if statement node
 		$$ = new lp::IfStmt($3, $5);
@@ -350,7 +350,7 @@ if:	/* Simple conditional statement */
 	}
 
 	/* Compound conditional statement */
-	| IF controlSymbol cond THEN stmt ELSE stmt ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
+	| IF controlSymbol cond THEN stmtlist ELSE stmtlist ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
 	 {
 		// Create a new if statement node
 		$$ = new lp::IfStmt($3, $5, $7);
@@ -361,7 +361,7 @@ if:	/* Simple conditional statement */
 ;
 
 	/*  NEW in example 17 */
-while:  WHILE controlSymbol cond DO stmt ENDWHILE
+while:  WHILE controlSymbol cond DO stmt ENDWHILE // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
 		{
 			// Create a new while statement node
 			$$ = new lp::WhileStmt($3, $5);
@@ -371,8 +371,8 @@ while:  WHILE controlSymbol cond DO stmt ENDWHILE
     }
 ;
 
-/* Sergio: Comprobar y añadir
-repeat:  REPEAT controlSymbol stmt UNTIL cond
+/* TODO: Comprobar y añadir
+repeat:  REPEAT controlSymbol stmtlist UNTIL cond
 		{
 			// Create a new repeat statement node
 			$$ = new lp::RepeatStmt($3, $5);
