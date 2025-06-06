@@ -159,7 +159,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block
+%type <st> stmt asgn print read if while block clear_screen place
 
 %type <prog> program
 
@@ -171,6 +171,9 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /* NEW in example 5 */
 %token SEMICOLON
 /*******************************************/
+
+/* Added by Sergio */
+%token TOKEN_CLEARSCREEN TOKEN_PLACE
 
 /* NEW in example 17: IF, ELSE, WHILE */
 %token PRINT READ IF ELSE THEN ENDIF WHILE DO ENDWHILE
@@ -321,8 +324,30 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Default action
 		// $$ = $1;
 	 }
+	/* Added by Sergio */
+	| clear_screen
+	{
+		// Default action
+		// $$ = $1;
+	}
+	| place
+	{
+		// Default action
+		// $$ = $1;
+	}
+	 
 ;
 
+clear_screen: TOKEN_CLEARSCREEN SEMICOLON
+		{
+			// Create a new clear screen node
+			$$ = new lp::ClearScreenStmt();
+		}
+
+place: // TODO: Rellenar cuando clear_screen funcione
+	{
+
+	}
 
 block: LEFTCURLYBRACKET stmtlist RIGHTCURLYBRACKET  
 		{
@@ -340,7 +365,7 @@ controlSymbol:  /* Epsilon rule*/
 
 	/*  NEW in example 17 */
 if:	/* Simple conditional statement */
-	IF controlSymbol cond THEN stmtlist ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
+	IF controlSymbol cond THEN stmtlist ENDIF
     {
 		// Create a new if statement node
 		$$ = new lp::IfStmt($3, $5);
@@ -350,7 +375,7 @@ if:	/* Simple conditional statement */
 	}
 
 	/* Compound conditional statement */
-	| IF controlSymbol cond THEN stmtlist ELSE stmtlist ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
+	| IF controlSymbol cond THEN stmtlist ELSE stmtlist ENDIF
 	 {
 		// Create a new if statement node
 		$$ = new lp::IfStmt($3, $5, $7);
@@ -361,7 +386,7 @@ if:	/* Simple conditional statement */
 ;
 
 	/*  NEW in example 17 */
-while:  WHILE controlSymbol cond DO stmtlist ENDWHILE // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
+while:  WHILE controlSymbol cond DO stmtlist ENDWHILE
 		{
 			// Create a new while statement node
 			$$ = new lp::WhileStmt($3, $5);

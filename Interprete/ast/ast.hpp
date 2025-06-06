@@ -1694,7 +1694,7 @@ class BlockStmt : public Statement
 
   public:
 /*!		
-	\brief Constructor of  WhileStmt
+	\brief Constructor of  BlockStmt
 	\param stmtList: list of Statement
 	\post  A new BlockStmt is created with the parameters
 */
@@ -1713,6 +1713,47 @@ class BlockStmt : public Statement
 
 /*!	
 	\brief   Evaluate the BlockStmt
+	\return  void
+	\sa	   	 printAST
+*/
+  void evaluate();
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+/*!	
+  \class   ClearScreenStmt
+  \brief   Definition of atributes and methods of ClearScreenStmt class
+  \note    ClearScreenStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+*/
+class ClearScreenStmt : public Statement 
+{
+ private:
+  // No attributes
+  public:
+/*!		
+	\brief Constructor of  ClearScreenStmt
+	\post  A new ClearScreenStmt is created with the parameters
+*/
+  ClearScreenStmt()
+	{
+		// Empty
+	}
+
+
+/*!
+	\brief   Print the AST for ClearScreenStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void printAST();
+
+/*!	
+	\brief   Evaluate the ClearScreenStmt
 	\return  void
 	\sa	   	 printAST
 */

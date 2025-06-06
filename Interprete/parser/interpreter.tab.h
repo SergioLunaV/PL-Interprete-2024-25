@@ -55,43 +55,45 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     SEMICOLON = 258,               /* SEMICOLON  */
-    PRINT = 259,                   /* PRINT  */
-    READ = 260,                    /* READ  */
-    IF = 261,                      /* IF  */
-    ELSE = 262,                    /* ELSE  */
-    THEN = 263,                    /* THEN  */
-    ENDIF = 264,                   /* ENDIF  */
-    WHILE = 265,                   /* WHILE  */
-    DO = 266,                      /* DO  */
-    ENDWHILE = 267,                /* ENDWHILE  */
-    LEFTCURLYBRACKET = 268,        /* LEFTCURLYBRACKET  */
-    RIGHTCURLYBRACKET = 269,       /* RIGHTCURLYBRACKET  */
-    ASSIGNMENT = 270,              /* ASSIGNMENT  */
-    COMMA = 271,                   /* COMMA  */
-    NUMBER = 272,                  /* NUMBER  */
-    BOOL = 273,                    /* BOOL  */
-    VARIABLE = 274,                /* VARIABLE  */
-    UNDEFINED = 275,               /* UNDEFINED  */
-    CONSTANT = 276,                /* CONSTANT  */
-    BUILTIN = 277,                 /* BUILTIN  */
-    OR = 278,                      /* OR  */
-    AND = 279,                     /* AND  */
-    GREATER_OR_EQUAL = 280,        /* GREATER_OR_EQUAL  */
-    LESS_OR_EQUAL = 281,           /* LESS_OR_EQUAL  */
-    GREATER_THAN = 282,            /* GREATER_THAN  */
-    LESS_THAN = 283,               /* LESS_THAN  */
-    EQUAL = 284,                   /* EQUAL  */
-    NOT_EQUAL = 285,               /* NOT_EQUAL  */
-    NOT = 286,                     /* NOT  */
-    PLUS = 287,                    /* PLUS  */
-    MINUS = 288,                   /* MINUS  */
-    MULTIPLICATION = 289,          /* MULTIPLICATION  */
-    DIVISION = 290,                /* DIVISION  */
-    MODULO = 291,                  /* MODULO  */
-    LPAREN = 292,                  /* LPAREN  */
-    RPAREN = 293,                  /* RPAREN  */
-    UNARY = 294,                   /* UNARY  */
-    POWER = 295                    /* POWER  */
+    TOKEN_CLEARSCREEN = 259,       /* TOKEN_CLEARSCREEN  */
+    TOKEN_PLACE = 260,             /* TOKEN_PLACE  */
+    PRINT = 261,                   /* PRINT  */
+    READ = 262,                    /* READ  */
+    IF = 263,                      /* IF  */
+    ELSE = 264,                    /* ELSE  */
+    THEN = 265,                    /* THEN  */
+    ENDIF = 266,                   /* ENDIF  */
+    WHILE = 267,                   /* WHILE  */
+    DO = 268,                      /* DO  */
+    ENDWHILE = 269,                /* ENDWHILE  */
+    LEFTCURLYBRACKET = 270,        /* LEFTCURLYBRACKET  */
+    RIGHTCURLYBRACKET = 271,       /* RIGHTCURLYBRACKET  */
+    ASSIGNMENT = 272,              /* ASSIGNMENT  */
+    COMMA = 273,                   /* COMMA  */
+    NUMBER = 274,                  /* NUMBER  */
+    BOOL = 275,                    /* BOOL  */
+    VARIABLE = 276,                /* VARIABLE  */
+    UNDEFINED = 277,               /* UNDEFINED  */
+    CONSTANT = 278,                /* CONSTANT  */
+    BUILTIN = 279,                 /* BUILTIN  */
+    OR = 280,                      /* OR  */
+    AND = 281,                     /* AND  */
+    GREATER_OR_EQUAL = 282,        /* GREATER_OR_EQUAL  */
+    LESS_OR_EQUAL = 283,           /* LESS_OR_EQUAL  */
+    GREATER_THAN = 284,            /* GREATER_THAN  */
+    LESS_THAN = 285,               /* LESS_THAN  */
+    EQUAL = 286,                   /* EQUAL  */
+    NOT_EQUAL = 287,               /* NOT_EQUAL  */
+    NOT = 288,                     /* NOT  */
+    PLUS = 289,                    /* PLUS  */
+    MINUS = 290,                   /* MINUS  */
+    MULTIPLICATION = 291,          /* MULTIPLICATION  */
+    DIVISION = 292,                /* DIVISION  */
+    MODULO = 293,                  /* MODULO  */
+    LPAREN = 294,                  /* LPAREN  */
+    RPAREN = 295,                  /* RPAREN  */
+    UNARY = 296,                   /* UNARY  */
+    POWER = 297                    /* POWER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -111,7 +113,7 @@ union YYSTYPE
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
 
-#line 115 "interpreter.tab.h"
+#line 117 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
