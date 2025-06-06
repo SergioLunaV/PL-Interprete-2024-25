@@ -361,7 +361,7 @@ if:	/* Simple conditional statement */
 ;
 
 	/*  NEW in example 17 */
-while:  WHILE controlSymbol cond DO stmt ENDWHILE // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
+while:  WHILE controlSymbol cond DO stmtlist ENDWHILE // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
 		{
 			// Create a new while statement node
 			$$ = new lp::WhileStmt($3, $5);

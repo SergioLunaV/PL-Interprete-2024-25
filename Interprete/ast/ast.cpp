@@ -1357,10 +1357,11 @@ void lp::IfStmt::evaluate()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// NEW in example 17
+// NEW in example 17 and modified by Sergio
 
 void lp::WhileStmt::printAST() 
 {
+	std::list<Statement *>::iterator stmtIter;
   std::cout << "WhileStmt: "  << std::endl;
   // Condition
   std::cout << "\t";
@@ -1368,7 +1369,10 @@ void lp::WhileStmt::printAST()
 
   // Body of the while loop
   std::cout << "\t";
-  this->_stmt->printAST();
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+  {
+  	(*stmtIter)->printAST();
+  }
 
   std::cout << std::endl;
 }
@@ -1376,10 +1380,15 @@ void lp::WhileStmt::printAST()
 
 void lp::WhileStmt::evaluate() 
 {
+  std::list<Statement *>::iterator stmtIter;
+
   // While the condition is true. the body is run 
   while (this->_cond->evaluateBool() == true)
   {	
-	  this->_stmt->evaluate();
+    for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+    {
+    	(*stmtIter)->evaluate();
+    }
   }
 
 }
