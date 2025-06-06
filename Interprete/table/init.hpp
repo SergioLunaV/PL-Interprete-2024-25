@@ -72,16 +72,18 @@ static struct {
 	      } keyword[] = { 
 	                    {"print",   		PRINT},
 	                    {"read",    		READ},
-						{"if",	    		IF},   			// NEW in example 17
-						{"else",    		ELSE}, 			// NEW in example 17
-						{"then",    		THEN},			// Added by Sergio
-						{"end_if",  		ENDIF},			// Added by Sergio
-						{"while",   		WHILE},			// NEW in example 17
-						{"do",  			DO},			// Added by Sergio
-						{"end_while",  		ENDWHILE},		// Added by Sergio
-						{"or",      		OR},    		// Modified by Sergio
-						{"and",     		AND},   		// Modified by Sergio
-						{"not",     		NOT},   		// Modified by Sergio
+						{"if",	    		IF},   					// NEW in example 17
+						{"else",    		ELSE}, 					// NEW in example 17
+						{"then",    		THEN},					// Added by Sergio
+						{"end_if",  		ENDIF},					// Added by Sergio
+						{"while",   		WHILE},					// NEW in example 17
+						{"do",  			DO},					// Added by Sergio
+						{"end_while",  		ENDWHILE},				// Added by Sergio
+						{"repeat",			REPEAT},				// Added by Sergio
+						{"until",			UNTIL},					// Added by Sergio
+						{"or",      		OR},    				// Modified by Sergio
+						{"and",     		AND},   				// Modified by Sergio
+						{"not",     		NOT},   				// Modified by Sergio
 						{"clear_screen", 	TOKEN_CLEARSCREEN}, 	// Added by Sergio
 						{"place",			TOKEN_PLACE}, 			// Added by Sergio
 	                    {"",        	0}

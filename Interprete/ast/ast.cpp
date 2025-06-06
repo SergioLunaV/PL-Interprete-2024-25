@@ -1361,7 +1361,7 @@ void lp::IfStmt::evaluate()
 
 void lp::WhileStmt::printAST() 
 {
-	std::list<Statement *>::iterator stmtIter;
+  std::list<Statement *>::iterator stmtIter;
   std::cout << "WhileStmt: "  << std::endl;
   // Condition
   std::cout << "\t";
@@ -1392,6 +1392,32 @@ void lp::WhileStmt::evaluate()
   }
 
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+void lp::RepeatStmt::printAST() 
+{
+  std::list<Statement *>::iterator stmtIter;
+  // ...
+}
+
+
+void lp::RepeatStmt::evaluate() 
+{
+  std::list<Statement *>::iterator stmtIter;
+
+  // Until the condition is met, the body is run
+  do
+  {	
+    for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+    {
+    	(*stmtIter)->evaluate();
+    }
+  } while (this->_cond->evaluateBool() != true);
+}
+
 
 
 

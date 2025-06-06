@@ -1643,7 +1643,7 @@ class IfStmt : public Statement
 class WhileStmt : public Statement 
 {
  private:
-  ExpNode *_cond; //!< Condicion of the while statement
+  ExpNode *_cond; //!< Condition of the while statement
   std::list<Statement *> *_stmts; //!< List of statements of the body of the while loop
 
   public:
@@ -1676,6 +1676,51 @@ class WhileStmt : public Statement
 };
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+/*!	
+  \class   WhileStmt
+  \brief   Definition of atributes and methods of WhileStmt class
+  \note    WhileStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+*/
+class RepeatStmt : public Statement 
+{
+ private:
+  std::list<Statement *> *_stmts; //!< List of statements of the body of the repeat loop 
+  ExpNode *_cond; //!< Condition of the repeat loop
+
+  public:
+/*!		
+	\brief Constructor of  RepeatStmt
+	\param statements: List of statements of the body of the loop 
+	\param condition: ExpNode of the condition
+	\post  A new RepeatStmt is created with the parameters
+*/
+  RepeatStmt(std::list<Statement *> *statements, ExpNode *condition)
+	{
+		this->_stmts = statements;
+		this->_cond = condition;
+	}
+
+
+/*!
+	\brief   Print the AST for RepeatStmt
+	\return  void
+	\sa		   evaluate
+*/
+  void printAST();
+
+/*!	
+	\brief   Evaluate the RepeatStmt
+	\return  void
+	\sa	   	 printAST
+*/
+  void evaluate();
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

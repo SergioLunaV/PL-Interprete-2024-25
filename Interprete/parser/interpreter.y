@@ -159,7 +159,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read if while block clear_screen place
+%type <st> stmt asgn print read if while block repeat clear_screen place
 
 %type <prog> program
 
@@ -176,7 +176,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %token TOKEN_CLEARSCREEN TOKEN_PLACE
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT READ IF ELSE THEN ENDIF WHILE DO ENDWHILE
+%token PRINT READ IF ELSE THEN ENDIF WHILE DO ENDWHILE REPEAT UNTIL
 
 /* NEW in example 17 */
 %token LEFTCURLYBRACKET RIGHTCURLYBRACKET
@@ -324,31 +324,48 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Default action
 		// $$ = $1;
 	 }
+	 /* Added by Sergio */
+	| repeat
+	{
+		// Default action
+		// $$ = $1;
+	 }
 	/* Added by Sergio */
 	| clear_screen
 	{
 		// Default action
 		// $$ = $1;
 	}
+	/* Added by Sergio */
 	| place
 	{
 		// Default action
 		// $$ = $1;
 	}
-	 
 ;
+
+repeat: REPEAT controlSymbol stmtlist UNTIL cond SEMICOLON
+		{
+			// Create a new repeat statement node
+			$$ = new lp::RepeatStmt($3, $5);
+
+			// To control the interactive mode
+			control--;
+		}
 
 clear_screen: TOKEN_CLEARSCREEN SEMICOLON
 		{
 			// Create a new clear screen node
 			$$ = new lp::ClearScreenStmt();
 		}
+;
 
 place: TOKEN_PLACE LPAREN exp COMMA exp RPAREN SEMICOLON
 		{
 			// Create a new place node
 			$$ = new lp::PlaceStmt($3, $5);
 		}
+;
 
 block: LEFTCURLYBRACKET stmtlist RIGHTCURLYBRACKET  
 		{
