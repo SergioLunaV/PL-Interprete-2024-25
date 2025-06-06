@@ -1736,7 +1736,7 @@ class ClearScreenStmt : public Statement
   // No attributes
   public:
 /*!		
-	\brief Constructor of  ClearScreenStmt
+	\brief Constructor of ClearScreenStmt
 	\post  A new ClearScreenStmt is created with the parameters
 */
   ClearScreenStmt()
@@ -1759,6 +1759,52 @@ class ClearScreenStmt : public Statement
 */
   void evaluate();
 };
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+/*!	
+  \class   PlaceStmt
+  \brief   Definition of atributes and methods of PlaceStmt class
+  \note    PlaceStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+*/
+class PlaceStmt : public Statement 
+{
+ private:
+  
+  ExpNode *_arg1; 	 //!< Expression of the first argument of Place
+  ExpNode *_arg2; 	 //!< Expression of the second argument of Place
+
+  public:
+/*!		
+	\brief Constructor of PlaceStmt
+	\param arg1: pointer to ExpNode, first argument of Place
+	\param arg2: pointer to ExpNode, second argument of Place
+	\post  A new PlaceStmt is created with the parameters
+*/
+  PlaceStmt(ExpNode *arg1, ExpNode *arg2): _arg1(arg1), _arg2(arg2)
+	{
+		// Empty
+	}
+
+/*!
+	\brief   Print the AST for PlaceStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void printAST();
+
+/*!	
+	\brief   Evaluate the PlaceStmt
+	\return  void
+	\sa	   	 printAST
+*/
+  void evaluate();
+};
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

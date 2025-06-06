@@ -344,10 +344,11 @@ clear_screen: TOKEN_CLEARSCREEN SEMICOLON
 			$$ = new lp::ClearScreenStmt();
 		}
 
-place: // TODO: Rellenar cuando clear_screen funcione
-	{
-
-	}
+place: TOKEN_PLACE LPAREN exp COMMA exp RPAREN SEMICOLON
+		{
+			// Create a new place node
+			$$ = new lp::PlaceStmt($3, $5);
+		}
 
 block: LEFTCURLYBRACKET stmtlist RIGHTCURLYBRACKET  
 		{

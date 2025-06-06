@@ -1435,6 +1435,34 @@ void lp::ClearScreenStmt::printAST()
 void lp::ClearScreenStmt::evaluate() 
 {
   std::cout << CLEAR_SCREEN;
+  PLACE(1, 1); // Move the cursor to the top left corner
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+void lp::PlaceStmt::printAST() 
+{
+  std::cout << "PlaceStmt "  << std::endl;
+  // ...
+}
+
+void lp::PlaceStmt::evaluate() 
+{
+  // Just allow number arguments
+  if(this->_arg1->getType() == NUMBER && this->_arg2->getType() == NUMBER)
+  {
+	// Evaluate the arguments
+	int arg1 = (int) this->_arg1->evaluateNumber();
+	int arg2 = (int) this->_arg2->evaluateNumber();
+
+	// Move the cursor
+	PLACE(arg1, arg2);
+  }
+  else
+  {
+	// TODO: Call warning function
+  }
 }
 
 
