@@ -70,15 +70,17 @@ static struct {
           std::string name ;
 	      int token;
 	      } keyword[] = { 
-	                    {"print", PRINT},
-	                    {"read",  READ},
-						{"if",	  IF},   	// NEW in example 17
-						{"else",  ELSE}, 	// NEW in example 17
-						{"while", WHILE},	// NEW in example 17
-						{"or",    OR},		// Added by Sergio
-						{"and",   AND},		// Added by Sergio
-						{"not",   NOT},		// Added by Sergio
-	                    {"",      0}
+	                    {"print",   PRINT},
+	                    {"read",    READ},
+						{"if",	    IF},   	// NEW in example 17
+						{"else",    ELSE}, 	// NEW in example 17
+						{"then",    THEN},	// Added by Sergio
+						{"end_if",  ENDIF},	// Added by Sergio
+						{"while",   WHILE},	// NEW in example 17
+						{"or",      OR},    // Modified by Sergio
+						{"and",     AND},   // Modified by Sergio
+						{"not",     NOT},   // Modified by Sergio
+	                    {"",        0}
 	                   };
 
 

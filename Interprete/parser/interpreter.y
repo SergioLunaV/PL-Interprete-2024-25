@@ -173,7 +173,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /* NEW in example 17: IF, ELSE, WHILE */
-%token PRINT READ IF ELSE WHILE 
+%token PRINT READ IF ELSE THEN ENDIF WHILE 
 
 /* NEW in example 17 */
 %token LEFTCURLYBRACKET RIGHTCURLYBRACKET
@@ -340,20 +340,20 @@ controlSymbol:  /* Epsilon rule*/
 
 	/*  NEW in example 17 */
 if:	/* Simple conditional statement */
-	IF controlSymbol cond stmt /* Sergio: Añadir ENDIF, y cambiar stmt por stmtlist, cambiando la clase en ast.hpp */
+	IF controlSymbol cond THEN stmt ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
     {
 		// Create a new if statement node
-		$$ = new lp::IfStmt($3, $4);
+		$$ = new lp::IfStmt($3, $5);
 
 		// To control the interactive mode
 		control--;
 	}
 
 	/* Compound conditional statement */
-	| IF controlSymbol cond stmt  ELSE stmt /* Sergio: Añadir ENDIF */
+	| IF controlSymbol cond THEN stmt ELSE stmt ENDIF // TODO: Cambiar stmt por stmtlist, cambiando la clase en ast.hpp
 	 {
 		// Create a new if statement node
-		$$ = new lp::IfStmt($3, $4, $6);
+		$$ = new lp::IfStmt($3, $5, $7);
 
 		// To control the interactive mode
 		control--;
