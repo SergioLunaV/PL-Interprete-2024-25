@@ -19,4 +19,4 @@ while (n <> 0) do
        n := n // 2;
 end_while
 
-print_string('Número en código binario: ' || r || '\n');
+print('Número en código binario: ' || r || '\n');

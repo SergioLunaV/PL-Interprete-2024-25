@@ -1,5 +1,5 @@
 repeat
-    escribir('\n Introducza un número (0 para salir) \n\t --> ');
+    print('\n Introducza un número (0 para salir) \n\t --> ');
     read(dato);
 
     switch (dato)
