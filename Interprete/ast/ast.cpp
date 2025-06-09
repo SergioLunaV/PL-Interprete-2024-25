@@ -485,6 +485,49 @@ double lp::DivisionNode::evaluateNumber()
   return result;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+void lp::IntegerDivisionNode::printAST()
+{
+  std::cout << "IntegerDivisionNode: //" << std::endl;
+  std::cout << "\t"; 
+	this->_left->printAST();
+	std::cout << "\t"; 
+	this->_right->printAST();
+}
+
+double lp::IntegerDivisionNode::evaluateNumber() 
+{
+	double result = 0.0;
+
+	// Ckeck the types of the expressions
+	if (this->getType() == NUMBER)
+	{
+		double leftNumber, rightNumber;
+
+		leftNumber = this->_left->evaluateNumber();
+		rightNumber = this->_right->evaluateNumber();
+	
+		// The divisor is not zero
+    	if(std::abs(rightNumber) > ERROR_BOUND)
+		{
+				result = (int) (leftNumber / rightNumber);
+		}
+		else
+		{
+			warning("Runtime error", "Division by zero");
+		}
+	}
+	else
+	{
+		warning("Runtime error: the expressions are not numeric for", "IntegerDivision");
+	}
+
+  return result;
+}
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

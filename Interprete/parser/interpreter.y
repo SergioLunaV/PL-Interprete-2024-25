@@ -216,8 +216,8 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /* MODIFIED in example 3 */
 %left PLUS MINUS 
 
-/* MODIFIED in example 5 */
-%left MULTIPLICATION DIVISION MODULO
+/* MODIFIED in example 5 and by Sergio */
+%left MULTIPLICATION DIVISION MODULO INTEGER_DIVISION
 
 %left LPAREN RPAREN
 
@@ -414,17 +414,6 @@ while:  WHILE controlSymbol cond DO stmtlist ENDWHILE
     }
 ;
 
-/* TODO: Comprobar y añadir
-repeat:  REPEAT controlSymbol stmtlist UNTIL cond
-		{
-			// Create a new repeat statement node
-			$$ = new lp::RepeatStmt($3, $5);
-
-			// To control the interactive mode
-			control--;
-		}
-*/
-
 	/*  NEW in example 17 */
 cond: 	LPAREN exp RPAREN
 		{ 
@@ -507,6 +496,11 @@ exp:	NUMBER
 		  // Create a new division node	
 		  $$ = new lp::DivisionNode($1, $3);
 	   }
+	| 	exp INTEGER_DIVISION exp
+		{
+		  // Create a new integer division node	
+		  $$ = new lp::IntegerDivisionNode($1, $3);
+		}
 
 	| 	LPAREN exp RPAREN
        	{ 

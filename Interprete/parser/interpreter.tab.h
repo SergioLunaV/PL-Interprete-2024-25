@@ -92,10 +92,11 @@ extern int yydebug;
     MULTIPLICATION = 293,          /* MULTIPLICATION  */
     DIVISION = 294,                /* DIVISION  */
     MODULO = 295,                  /* MODULO  */
-    LPAREN = 296,                  /* LPAREN  */
-    RPAREN = 297,                  /* RPAREN  */
-    UNARY = 298,                   /* UNARY  */
-    POWER = 299                    /* POWER  */
+    INTEGER_DIVISION = 296,        /* INTEGER_DIVISION  */
+    LPAREN = 297,                  /* LPAREN  */
+    RPAREN = 298,                  /* RPAREN  */
+    UNARY = 299,                   /* UNARY  */
+    POWER = 300                    /* POWER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -115,7 +116,7 @@ union YYSTYPE
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
 
-#line 119 "interpreter.tab.h"
+#line 120 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

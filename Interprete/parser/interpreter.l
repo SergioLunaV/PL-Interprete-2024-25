@@ -160,6 +160,7 @@ IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 "+"		{ return PLUS;   } 			/* NEW in example 3 */
 
 "*"	    { return MULTIPLICATION; } 	/* NEW in example 3 */
+"//"	{return INTEGER_DIVISION; }	/* Added by Sergio */
 "/"     { return DIVISION; } 		/* NEW in example 3 */
 
 "("     { return LPAREN; } 			/* NEW in example 3 */
