@@ -1,11 +1,12 @@
 <map id="lp::NumericOperatorNode" name="lp::NumericOperatorNode">
-<area shape="rect" id="node1" title="Definition of atributes and methods of NumericOperatorNode class." alt="" coords="335,132,523,159"/>
-<area shape="rect" id="node4" href="$classlp_1_1DivisionNode.html" title="Definition of atributes and methods of DivisionNode class." alt="" coords="589,5,718,32"/>
-<area shape="rect" id="node5" href="$classlp_1_1MinusNode.html" title="Definition of atributes and methods of MinusNode class." alt="" coords="596,56,711,83"/>
-<area shape="rect" id="node6" href="$classlp_1_1ModuloNode.html" title="Definition of atributes and methods of ModuloNode class." alt="" coords="591,107,715,133"/>
-<area shape="rect" id="node7" href="$classlp_1_1MultiplicationNode.html" title="Definition of atributes and methods of MultiplicationNode class." alt="" coords="571,157,736,184"/>
-<area shape="rect" id="node8" href="$classlp_1_1PlusNode.html" title="Definition of atributes and methods of PlusNode class." alt="" coords="602,208,705,235"/>
-<area shape="rect" id="node9" href="$classlp_1_1PowerNode.html" title="Definition of atributes and methods of PowerNode class." alt="" coords="595,259,711,285"/>
-<area shape="rect" id="node2" href="$classlp_1_1OperatorNode.html" title="Definition of atributes and methods of OperatorNode class." alt="" coords="153,132,287,159"/>
-<area shape="rect" id="node3" href="$classlp_1_1ExpNode.html" title="Definition of atributes and methods of ExpNode class." alt="" coords="5,132,105,159"/>
+<area shape="rect" id="node1" title="Definition of atributes and methods of NumericOperatorNode class." alt="" coords="335,157,523,184"/>
+<area shape="rect" id="node4" href="$classlp_1_1DivisionNode.html" title="Definition of atributes and methods of DivisionNode class." alt="" coords="593,5,723,32"/>
+<area shape="rect" id="node5" href="$classlp_1_1IntegerDivisionNode.html" title="Definition of atributes and methods of IntegerDivisionNode class." alt="" coords="571,56,745,83"/>
+<area shape="rect" id="node6" href="$classlp_1_1MinusNode.html" title="Definition of atributes and methods of MinusNode class." alt="" coords="601,107,715,133"/>
+<area shape="rect" id="node7" href="$classlp_1_1ModuloNode.html" title="Definition of atributes and methods of ModuloNode class." alt="" coords="596,157,720,184"/>
+<area shape="rect" id="node8" href="$classlp_1_1MultiplicationNode.html" title="Definition of atributes and methods of MultiplicationNode class." alt="" coords="575,208,741,235"/>
+<area shape="rect" id="node9" href="$classlp_1_1PlusNode.html" title="Definition of atributes and methods of PlusNode class." alt="" coords="607,259,709,285"/>
+<area shape="rect" id="node10" href="$classlp_1_1PowerNode.html" title="Definition of atributes and methods of PowerNode class." alt="" coords="600,309,716,336"/>
+<area shape="rect" id="node2" href="$classlp_1_1OperatorNode.html" title="Definition of atributes and methods of OperatorNode class." alt="" coords="153,157,287,184"/>
+<area shape="rect" id="node3" href="$classlp_1_1ExpNode.html" title="Definition of atributes and methods of ExpNode class." alt="" coords="5,157,105,184"/>
 </map>

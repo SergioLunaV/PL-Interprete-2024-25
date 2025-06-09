@@ -225,84 +225,81 @@ $(function() {
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="stringliteral">&quot;+&quot;</span>     { <span class="keywordflow">return</span> PLUS;   }          <span class="comment">/* NEW in example 3 */</span></div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="stringliteral">&quot;*&quot;</span>     { <span class="keywordflow">return</span> MULTIPLICATION; }  <span class="comment">/* NEW in example 3 */</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="stringliteral">&quot;/&quot;</span>     { <span class="keywordflow">return</span> DIVISION; }        <span class="comment">/* NEW in example 3 */</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="stringliteral">&quot;(&quot;</span>     { <span class="keywordflow">return</span> LPAREN; }          <span class="comment">/* NEW in example 3 */</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="stringliteral">&quot;)&quot;</span>     { <span class="keywordflow">return</span> RPAREN; }          <span class="comment">/* NEW in example 3 */</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="stringliteral">&quot;//&quot;</span>    {<span class="keywordflow">return</span> INTEGER_DIVISION; } <span class="comment">/* Added by Sergio */</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="stringliteral">&quot;/&quot;</span>     { <span class="keywordflow">return</span> DIVISION; }        <span class="comment">/* NEW in example 3 */</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="stringliteral">&quot;(&quot;</span>     { <span class="keywordflow">return</span> LPAREN; }          <span class="comment">/* NEW in example 3 */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="stringliteral">&quot;)&quot;</span>     { <span class="keywordflow">return</span> RPAREN; }          <span class="comment">/* NEW in example 3 */</span></div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="stringliteral">&quot;%&quot;</span>     { <span class="keywordflow">return</span> MODULO; }          <span class="comment">/* NEW in example 5 */</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="stringliteral">&quot;^&quot;</span>     { <span class="keywordflow">return</span> POWER; }           <span class="comment">/* NEW in example 5 */</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="stringliteral">&quot;^&quot;</span>     { <span class="keywordflow">return</span> POWER; }           <span class="comment">/* NEW in example 5 */</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="stringliteral">&quot;:=&quot;</span>    { <span class="keywordflow">return</span> ASSIGNMENT; }      <span class="comment">/* NEW in example 7, modified by Sergio */</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="stringliteral">&quot;:=&quot;</span>    { <span class="keywordflow">return</span> ASSIGNMENT; }      <span class="comment">/* NEW in example 7, modified by Sergio */</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="stringliteral">&quot;=&quot;</span>     { <span class="keywordflow">return</span> EQUAL; }           <span class="comment">/* NEW in example 15 */</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="stringliteral">&quot;=&quot;</span>     { <span class="keywordflow">return</span> EQUAL; }           <span class="comment">/* NEW in example 15 */</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="stringliteral">&quot;&lt;&gt;&quot;</span>    { <span class="keywordflow">return</span> NOT_EQUAL; }       <span class="comment">/* NEW in example 15 */</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="stringliteral">&quot;&gt;=&quot;</span>    { <span class="keywordflow">return</span> GREATER_OR_EQUAL; }<span class="comment">/* NEW in example 15 */</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="stringliteral">&quot;&lt;=&quot;</span>    { <span class="keywordflow">return</span> LESS_OR_EQUAL; }   <span class="comment">/* NEW in example 15 */</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="stringliteral">&quot;&gt;&quot;</span>     { <span class="keywordflow">return</span> GREATER_THAN; }    <span class="comment">/* NEW in example 15 */</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="stringliteral">&quot;&lt;&quot;</span>     { <span class="keywordflow">return</span> LESS_THAN; }       <span class="comment">/* NEW in example 15 */</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="stringliteral">&quot;{&quot;</span>     { <span class="keywordflow">return</span> LEFTCURLYBRACKET; }    <span class="comment">/* NEW in example 17 */</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="stringliteral">&quot;&lt;&gt;&quot;</span>    { <span class="keywordflow">return</span> NOT_EQUAL; }       <span class="comment">/* NEW in example 15 */</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="stringliteral">&quot;&gt;=&quot;</span>    { <span class="keywordflow">return</span> GREATER_OR_EQUAL; }<span class="comment">/* NEW in example 15 */</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="stringliteral">&quot;&lt;=&quot;</span>    { <span class="keywordflow">return</span> LESS_OR_EQUAL; }   <span class="comment">/* NEW in example 15 */</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="stringliteral">&quot;&gt;&quot;</span>     { <span class="keywordflow">return</span> GREATER_THAN; }    <span class="comment">/* NEW in example 15 */</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="stringliteral">&quot;&lt;&quot;</span>     { <span class="keywordflow">return</span> LESS_THAN; }       <span class="comment">/* NEW in example 15 */</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="stringliteral">&quot;{&quot;</span>     { <span class="keywordflow">return</span> LEFTCURLYBRACKET; }    <span class="comment">/* NEW in example 17 */</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="stringliteral">&quot;}&quot;</span>     { <span class="keywordflow">return</span> RIGHTCURLYBRACKET; }   <span class="comment">/* NEW in example 17 */</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="stringliteral">&quot;}&quot;</span>     { <span class="keywordflow">return</span> RIGHTCURLYBRACKET; }   <span class="comment">/* NEW in example 17 */</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;&lt;&lt;EOF&gt;&gt; { <span class="comment">/* The interpreter finishes when finds the end of file character */</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="comment">/*  PLACE(24,10);</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">          std::cout &lt;&lt;  BICYAN;</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">          std::cout &lt;&lt;  &quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt; End of program &lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;;</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">          std::cout &lt;&lt; std::endl;</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">          std::cout &lt;&lt; RESET;</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">          PLACE(25,1);</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">        */</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;          <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;.                               {   </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                    <span class="comment">/* Any other character */</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                                    <span class="comment">/* MODIFIIED in example 3 */</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                    <span class="comment">/* Change to error state */</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                    BEGIN(ERROR); </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                                    <span class="comment">/* </span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">                                        The current value of yytext </span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">                                        will be concatenated with the next character</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">                                    */</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                    yymore();  </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;&lt;ERROR&gt;[^0-9+\-*/()\^% \t\n\;a-zA-Z:=&lt;&gt;!]   { <span class="comment">/* MODIFIED in examples 5, 7, 15, and by Sergio */</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                                  <span class="comment">/* NEW in example 3 */</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                  <span class="comment">/* </span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">                                    The current value of yytext </span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">                                    will be concatenated with the next character</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">                                  */</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                                    yymore(); </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;&lt;ERROR&gt;(.|\n)                { </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                                <span class="comment">/* NEW in example 3 */</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                <span class="comment">/* Rewind one position */</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                yyless(yyleng-1); </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;&lt;&lt;EOF&gt;&gt; { <span class="comment">/* The interpreter finishes when finds the end of file character */</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="comment">/*  PLACE(24,10);</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">          std::cout &lt;&lt;  BICYAN;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">          std::cout &lt;&lt;  &quot;&gt;&gt;&gt;&gt;&gt;&gt;&gt; End of program &lt;&lt;&lt;&lt;&lt;&lt;&lt;&quot;;</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">          std::cout &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">          std::cout &lt;&lt; RESET;</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">          PLACE(25,1);</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;          <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;.                               {   </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                    <span class="comment">/* Any other character */</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                    <span class="comment">/* MODIFIIED in example 3 */</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                    <span class="comment">/* Change to error state */</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                    BEGIN(ERROR); </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                                    <span class="comment">/* </span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">                                        The current value of yytext </span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">                                        will be concatenated with the next character</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">                                    */</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                    yymore();  </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;&lt;ERROR&gt;[^0-9+\-*/()\^% \t\n\;a-zA-Z:=&lt;&gt;!]   { <span class="comment">/* MODIFIED in examples 5, 7, 15, and by Sergio */</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                  <span class="comment">/* NEW in example 3 */</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                                  <span class="comment">/* </span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">                                    The current value of yytext </span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">                                    will be concatenated with the next character</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">                                  */</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                    yymore(); </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;&lt;ERROR&gt;(.|\n)                { </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                <span class="comment">/* NEW in example 3 */</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                                <span class="comment">/* Rewind one position */</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                                yyless(yyleng-1); </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                <span class="comment">/* Display the error message */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                warning(<span class="stringliteral">&quot;Lexical error&quot;</span>, yytext);</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                <span class="comment">/* Display the error message */</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                warning(<span class="stringliteral">&quot;Lexical error&quot;</span>, yytext);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                                <span class="comment">/* Restore the initial state */</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                BEGIN(INITIAL);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;%%</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                                <span class="comment">/* Restore the initial state */</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                BEGIN(INITIAL);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                            }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;%%</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
 <div class="ttc" id="aclasslp_1_1NumericVariable_html"><div class="ttname"><a href="classlp_1_1NumericVariable.html">lp::NumericVariable</a></div><div class="ttdoc">Definition of atributes and methods of NumericVariable class.</div><div class="ttdef"><b>Definition:</b> <a href="numericVariable_8hpp_source.html#l00028">numericVariable.hpp:29</a></div></div>
 <div class="ttc" id="aclasslp_1_1Symbol_html"><div class="ttname"><a href="classlp_1_1Symbol.html">lp::Symbol</a></div><div class="ttdoc">Definition of the class Symbol.</div><div class="ttdef"><b>Definition:</b> <a href="symbol_8hpp_source.html#l00028">symbol.hpp:29</a></div></div>
 <div class="ttc" id="aclasslp_1_1Symbol_html_a3863314f7ff898f11837f4b0e474199b"><div class="ttname"><a href="classlp_1_1Symbol.html#a3863314f7ff898f11837f4b0e474199b">lp::Symbol::getToken</a></div><div class="ttdeci">int getToken() const</div><div class="ttdoc">Public method that returns the token of the Symbol.</div><div class="ttdef"><b>Definition:</b> <a href="symbol_8hpp_source.html#l00106">symbol.hpp:106</a></div></div>
