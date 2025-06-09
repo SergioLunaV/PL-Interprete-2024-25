@@ -6,6 +6,11 @@
     \version 1.0
 */
 
+#include <iostream>
+
+// Delete the comment if you want to use atof in the operator overload >>
+// #include <stdlib.h>
+
 #include "alphanumericVariable.hpp"
 
 

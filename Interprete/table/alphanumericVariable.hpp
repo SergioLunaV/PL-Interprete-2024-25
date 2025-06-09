@@ -9,6 +9,9 @@
 #ifndef _ALPHANUMERICVARIABLE_HPP_
 #define _ALPHANUMERICVARIABLE_HPP_
 
+#include <string>
+#include <iostream>
+
 #include "variable.hpp"
 
 /*!
