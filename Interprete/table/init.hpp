@@ -86,6 +86,7 @@ static struct {
 						{"not",     		NOT},   				// Modified by Sergio
 						{"clear_screen", 	TOKEN_CLEARSCREEN}, 	// Added by Sergio
 						{"place",			TOKEN_PLACE}, 			// Added by Sergio
+						{"mod",   			MODULO},				// Added by Sergio
 	                    {"",        	0}
 	                   };
 

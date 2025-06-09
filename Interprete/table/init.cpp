@@ -79,7 +79,7 @@ void init(lp::Table &t)
  //  NEW in example 12
  lp::Keyword *k;
 
- // The predefined numeric constants are installed in the table of symbols
+ // The predefined keywords are installed in the table of symbols
  for (i=0; keyword[i].name.compare("")!=0; i++)
 	{
 		// The  Keywords numeric is inserted into the symbol table

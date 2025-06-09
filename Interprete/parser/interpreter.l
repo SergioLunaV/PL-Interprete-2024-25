@@ -166,10 +166,6 @@ IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 "("     { return LPAREN; } 			/* NEW in example 3 */
 ")"	    { return RPAREN; } 			/* NEW in example 3 */
 
-
-
-"%"     { return MODULO; }			/* NEW in example 5 */
-
 "^"	    { return POWER; }			/* NEW in example 5 */
 
 ":=" 	{ return ASSIGNMENT; }		/* NEW in example 7, modified by Sergio */
