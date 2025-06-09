@@ -846,57 +846,57 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 170 "interpreter.l"
+#line 169 "interpreter.l"
 { return POWER; }			/* NEW in example 5 */
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 172 "interpreter.l"
+#line 171 "interpreter.l"
 { return ASSIGNMENT; }		/* NEW in example 7, modified by Sergio */
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 175 "interpreter.l"
+#line 174 "interpreter.l"
 { return EQUAL; }			/* NEW in example 15 */
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 177 "interpreter.l"
+#line 176 "interpreter.l"
 { return NOT_EQUAL; }		/* NEW in example 15 */
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 179 "interpreter.l"
+#line 178 "interpreter.l"
 { return GREATER_OR_EQUAL; }/* NEW in example 15 */
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 181 "interpreter.l"
+#line 180 "interpreter.l"
 { return LESS_OR_EQUAL; }	/* NEW in example 15 */
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 183 "interpreter.l"
+#line 182 "interpreter.l"
 { return GREATER_THAN; }	/* NEW in example 15 */
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 185 "interpreter.l"
+#line 184 "interpreter.l"
 { return LESS_THAN; }		/* NEW in example 15 */
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 187 "interpreter.l"
+#line 186 "interpreter.l"
 { return LEFTCURLYBRACKET; } 	/* NEW in example 17 */
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 189 "interpreter.l"
+#line 188 "interpreter.l"
 { return RIGHTCURLYBRACKET; }	/* NEW in example 17 */
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(ERROR):
-#line 192 "interpreter.l"
+#line 191 "interpreter.l"
 { /* The interpreter finishes when finds the end of file character */
 		/*  PLACE(24,10);
 	  	  std::cout <<  BICYAN;
@@ -910,7 +910,7 @@ case YY_STATE_EOF(ERROR):
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 204 "interpreter.l"
+#line 203 "interpreter.l"
 { 	
 									/* Any other character */
 									/* MODIFIIED in example 3 */
@@ -926,7 +926,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 217 "interpreter.l"
+#line 216 "interpreter.l"
 { /* MODIFIED in examples 5, 7, 15, and by Sergio */
 								  /* NEW in example 3 */
 								  /* 
@@ -938,7 +938,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 226 "interpreter.l"
+#line 225 "interpreter.l"
 { 
 								/* NEW in example 3 */
 								/* Rewind one position */
@@ -953,7 +953,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 237 "interpreter.l"
+#line 236 "interpreter.l"
 ECHO;
 	YY_BREAK
 #line 960 "lex.yy.c"
@@ -1844,6 +1844,6 @@ int main()
 	return 0;
 	}
 #endif
-#line 237 "interpreter.l"
+#line 236 "interpreter.l"
 
 

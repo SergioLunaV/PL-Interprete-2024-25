@@ -19,13 +19,15 @@ CFLAGS = -c -g  -Wall -ansi -O2
 # MODIFIED in example 12: keyword.o
 # MODIFIED in example 13: builtin.o builtinParameter1.o mathFunction.o
 # MODIFIED in example 14: builtinParameter0.o builtinParameter2.o 
+# Modified by Sergio: alphanumericVariable.0
 OBJECTS= table.o symbol.o variable.o numericVariable.o \
 		init.o \
 		constant.o numericConstant.o \
 		keyword.o \
 		builtin.o builtinParameter1.o mathFunction.o \
 		builtinParameter0.o builtinParameter2.o \
-		logicalVariable.o logicalConstant.o
+		logicalVariable.o logicalConstant.o \
+		alphanumericVariable.o
 
 # Predefined macros 
 #
@@ -59,7 +61,12 @@ numericVariable.o: numericVariable.cpp numericVariable.hpp variable.hpp symbol.h
 logicalVariable.o: logicalVariable.cpp logicalVariable.hpp variable.hpp symbol.hpp symbolInterface.hpp 
 	@echo "Compiling " $<
 	@$(CPP) $(CFLAGS) $<
+
 #######################################################
+# Added by Sergio
+alphanumericVariable.o: alphanumericVariable.cpp alphanumericVariable.hpp variable.hpp symbol.hpp symbolInterface.hpp
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
 
 #######################################################
 # NEW in example 11
