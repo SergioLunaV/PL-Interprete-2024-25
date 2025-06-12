@@ -59,44 +59,46 @@ extern int yydebug;
     TOKEN_PLACE = 260,             /* TOKEN_PLACE  */
     PRINT = 261,                   /* PRINT  */
     READ = 262,                    /* READ  */
-    IF = 263,                      /* IF  */
-    ELSE = 264,                    /* ELSE  */
-    THEN = 265,                    /* THEN  */
-    ENDIF = 266,                   /* ENDIF  */
-    WHILE = 267,                   /* WHILE  */
-    DO = 268,                      /* DO  */
-    ENDWHILE = 269,                /* ENDWHILE  */
-    REPEAT = 270,                  /* REPEAT  */
-    UNTIL = 271,                   /* UNTIL  */
-    LEFTCURLYBRACKET = 272,        /* LEFTCURLYBRACKET  */
-    RIGHTCURLYBRACKET = 273,       /* RIGHTCURLYBRACKET  */
-    ASSIGNMENT = 274,              /* ASSIGNMENT  */
-    COMMA = 275,                   /* COMMA  */
-    NUMBER = 276,                  /* NUMBER  */
-    BOOL = 277,                    /* BOOL  */
-    VARIABLE = 278,                /* VARIABLE  */
-    UNDEFINED = 279,               /* UNDEFINED  */
-    CONSTANT = 280,                /* CONSTANT  */
-    BUILTIN = 281,                 /* BUILTIN  */
-    OR = 282,                      /* OR  */
-    AND = 283,                     /* AND  */
-    GREATER_OR_EQUAL = 284,        /* GREATER_OR_EQUAL  */
-    LESS_OR_EQUAL = 285,           /* LESS_OR_EQUAL  */
-    GREATER_THAN = 286,            /* GREATER_THAN  */
-    LESS_THAN = 287,               /* LESS_THAN  */
-    EQUAL = 288,                   /* EQUAL  */
-    NOT_EQUAL = 289,               /* NOT_EQUAL  */
-    NOT = 290,                     /* NOT  */
-    PLUS = 291,                    /* PLUS  */
-    MINUS = 292,                   /* MINUS  */
-    MULTIPLICATION = 293,          /* MULTIPLICATION  */
-    DIVISION = 294,                /* DIVISION  */
-    MODULO = 295,                  /* MODULO  */
-    INTEGER_DIVISION = 296,        /* INTEGER_DIVISION  */
-    LPAREN = 297,                  /* LPAREN  */
-    RPAREN = 298,                  /* RPAREN  */
-    UNARY = 299,                   /* UNARY  */
-    POWER = 300                    /* POWER  */
+    READSTRING = 263,              /* READSTRING  */
+    IF = 264,                      /* IF  */
+    ELSE = 265,                    /* ELSE  */
+    THEN = 266,                    /* THEN  */
+    ENDIF = 267,                   /* ENDIF  */
+    WHILE = 268,                   /* WHILE  */
+    DO = 269,                      /* DO  */
+    ENDWHILE = 270,                /* ENDWHILE  */
+    REPEAT = 271,                  /* REPEAT  */
+    UNTIL = 272,                   /* UNTIL  */
+    LEFTCURLYBRACKET = 273,        /* LEFTCURLYBRACKET  */
+    RIGHTCURLYBRACKET = 274,       /* RIGHTCURLYBRACKET  */
+    ASSIGNMENT = 275,              /* ASSIGNMENT  */
+    COMMA = 276,                   /* COMMA  */
+    NUMBER = 277,                  /* NUMBER  */
+    BOOL = 278,                    /* BOOL  */
+    STRING = 279,                  /* STRING  */
+    VARIABLE = 280,                /* VARIABLE  */
+    UNDEFINED = 281,               /* UNDEFINED  */
+    CONSTANT = 282,                /* CONSTANT  */
+    BUILTIN = 283,                 /* BUILTIN  */
+    OR = 284,                      /* OR  */
+    AND = 285,                     /* AND  */
+    GREATER_OR_EQUAL = 286,        /* GREATER_OR_EQUAL  */
+    LESS_OR_EQUAL = 287,           /* LESS_OR_EQUAL  */
+    GREATER_THAN = 288,            /* GREATER_THAN  */
+    LESS_THAN = 289,               /* LESS_THAN  */
+    EQUAL = 290,                   /* EQUAL  */
+    NOT_EQUAL = 291,               /* NOT_EQUAL  */
+    NOT = 292,                     /* NOT  */
+    PLUS = 293,                    /* PLUS  */
+    MINUS = 294,                   /* MINUS  */
+    MULTIPLICATION = 295,          /* MULTIPLICATION  */
+    DIVISION = 296,                /* DIVISION  */
+    MODULO = 297,                  /* MODULO  */
+    INTEGER_DIVISION = 298,        /* INTEGER_DIVISION  */
+    LPAREN = 299,                  /* LPAREN  */
+    RPAREN = 300,                  /* RPAREN  */
+    UNARY = 301,                   /* UNARY  */
+    POWER = 302                    /* POWER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -116,7 +118,7 @@ union YYSTYPE
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
 
-#line 120 "interpreter.tab.h"
+#line 122 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

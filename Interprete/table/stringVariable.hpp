@@ -1,13 +1,13 @@
 /*!
     \file    stringVariable.hpp
-    \brief   Declaration of stringVariable class
+    \brief   Declaration of StringVariable class
     \author
     \date    2025-06-09
     \version 1.0
 */
 
-#ifndef _stringVARIABLE_HPP_
-#define _stringVARIABLE_HPP_
+#ifndef _STRINGVARIABLE_HPP_
+#define _STRINGVARIABLE_HPP_
 
 #include <string>
 #include <iostream>
@@ -21,20 +21,20 @@
 namespace lp{
 
 /*!
-  \class stringVariable
-  \brief Definition of atributes and methods of stringVariable class
-  \note  stringVariable class publicly inherits from Variable class
+  \class StringVariable
+  \brief Definition of atributes and methods of StringVariable class
+  \note  StringVariable class publicly inherits from Variable class
 */
-class stringVariable:public lp::Variable
+class StringVariable:public lp::Variable
 {
 /*!
-\name Private atributes of stringVariable class
+\name Private atributes of StringVariable class
 */
     private:
-        std::string     _value;     //!< \brief String value of the stringVariable
+        std::string     _value;     //!< \brief String value of the StringVariable
 
 /*!
-\name Public methods of stringVariable class
+\name Public methods of StringVariable class
 */
     public:
 
@@ -45,15 +45,15 @@ class stringVariable:public lp::Variable
 /*!		
 	\brief Constructor with arguments with default values
 	\note  Inline function that uses Variable's constructor as members initializer
-	\param name:  name of the stringVariable
-	\param token: token of the stringVariable
-	\param type:  type of the stringVariable
-	\param value: string value of the stringVariable
+	\param name:  name of the StringVariable
+	\param token: token of the StringVariable
+	\param type:  type of the StringVariable
+	\param value: string value of the StringVariable
 	\pre   None
-	\post  A new stringVariable is created with the values of the parameters
+	\post  A new StringVariable is created with the values of the parameters
 	\sa   setName, setValue
 */
-    inline stringVariable(std::string name = "", int token = 0, int type = 0, std::string value = ""):
+    inline StringVariable(std::string name = "", int token = 0, int type = 0, std::string value = ""):
     Variable(name,token,type)
     {
         this->setValue(value);
@@ -62,12 +62,12 @@ class stringVariable:public lp::Variable
 /*!		
 	\brief Copy constructor
 	\note  Inline function
-	\param n: object of stringVariable class
+	\param n: object of StringVariable class
 	\pre   None
-	\post  A new stringVariable is created with the values of an existent stringVariable
+	\post  A new StringVariable is created with the values of an existent StringVariable
 	\sa    setName, setValue
 */
-	inline stringVariable(const stringVariable & n)
+	inline StringVariable(const StringVariable & n)
 	{
 		// Inherited methods
 		this->setName(n.getName());
@@ -86,11 +86,11 @@ class stringVariable:public lp::Variable
 */
 	
 /*!	
-	\brief  Public method that returns the value of the stringVariable
+	\brief  Public method that returns the value of the StringVariable
 	\note   Inline function
 	\pre    None
 	\post   None
-    \return Value of the stringVariable
+    \return Value of the StringVariable
 	\sa		getValue
 */
 	inline std::string getValue() const
@@ -104,11 +104,11 @@ class stringVariable:public lp::Variable
 */
 		
 /*!	
-	\brief   This function modifies the value of the stringVariable
+	\brief   This function modifies the value of the StringVariable
 	\note    Inline function
-	\param   value: new value of the stringVariable
+	\param   value: new value of the StringVariable
 	\pre     None
-	\post    The value of the stringVariable is equal to the parameter 
+	\post    The value of the StringVariable is equal to the parameter 
 	\return  void
 	\sa 	 setValue
 */
@@ -123,16 +123,16 @@ class stringVariable:public lp::Variable
 */
 		
 /*!		
-	\brief Read a stringVariable
+	\brief Read a StringVariable
 	\pre   None
-	\post  The atributes of the stringVariable are modified with the read values
+	\post  The atributes of the StringVariable are modified with the read values
     \sa    write
 */
 	void read();
 
 	
 /*!		
-	\brief Write a stringVariable
+	\brief Write a StringVariable
 	\pre   None
 	\post  None
     \sa    read
@@ -146,35 +146,35 @@ class stringVariable:public lp::Variable
 	
 /*!		
 	\brief  Assignment Operator
-	\param  n: object of stringVariable class
+	\param  n: object of StringVariable class
 	\post   The atributes of this object are equal to the atributes of the parameter
 	\return Reference to this object
 */
-	stringVariable &operator=(const stringVariable &n);
+	StringVariable &operator=(const StringVariable &n);
 	
 
  //! \name Friend functions
 /*!		
 	\brief  Insertion operator
 	\param  i: input stream
-	\param  n: object of stringVariable class
+	\param  n: object of StringVariable class
 	\pre    nome
-	\post   The atributes of the stringVariable are modified with the inserted values from the input stream
+	\post   The atributes of the StringVariable are modified with the inserted values from the input stream
 	\return The input stream
 */
-	friend std::istream &operator>>(std::istream &i, stringVariable &n);
+	friend std::istream &operator>>(std::istream &i, StringVariable &n);
 
 /*!		
 	\brief  Extraction operator
 	\param  o: output stream
-	\param  n: object of stringVariable class
+	\param  n: object of StringVariable class
 	\pre    nome
-	\post   The atributes of the stringVariable are written in the output stream
+	\post   The atributes of the StringVariable are written in the output stream
 	\return The output stream
 */
-	friend std::ostream &operator<<(std::ostream &o, stringVariable const &n);
+	friend std::ostream &operator<<(std::ostream &o, StringVariable const &n);
 	
-// End of stringVariable class
+// End of StringVariable class
 };
 
 // End of name space lp

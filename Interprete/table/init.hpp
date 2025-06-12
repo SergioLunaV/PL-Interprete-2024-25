@@ -72,6 +72,7 @@ static struct {
 	      } keyword[] = { 
 	                    {"print",   		PRINT},
 	                    {"read",    		READ},
+						{"read_string", 	READSTRING},			// Added by Sergio
 						{"if",	    		IF},   					// NEW in example 17
 						{"else",    		ELSE}, 					// NEW in example 17
 						{"then",    		THEN},					// Added by Sergio

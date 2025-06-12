@@ -1,6 +1,6 @@
 /*!
-    \file    stringVariable.cpp
-    \brief   Code of some functions of stringVariable class
+    \file    StringVariable.cpp
+    \brief   Code of some functions of StringVariable class
     \author
     \date    2025-06-09
     \version 1.0
@@ -15,34 +15,34 @@
 
 
 /*
- Definitions of the read and write functions of the stringVariable class
+ Definitions of the read and write functions of the StringVariable class
 */
 
-void lp::stringVariable::read()
+void lp::StringVariable::read()
 {
     // Inherited attributes
-    std::cout << "Name of the stringVariable: ";
+    std::cout << "Name of the StringVariable: ";
     std::cin >> this->_name;
  
-    std::cout << "Token of the stringVariable: ";
+    std::cout << "Token of the StringVariable: ";
     std::cin >> this->_token;
     // The \n character is read 
     std::cin.ignore(); 
  
-    std::cout << "Type of the stringVariable: ";
+    std::cout << "Type of the StringVariable: ";
     std::cin >> this->_type;
     // The \n character is read 
     std::cin.ignore(); 
  
  
     // Own attribute
-    std::cout << "Value of the stringVariable: ";
+    std::cout << "Value of the StringVariable: ";
     std::cin >> this->_value;
     // The \n character is read 
     std::cin.ignore(); 
 }
 
-void lp::stringVariable::write() const
+void lp::StringVariable::write() const
 {
   // Inherited methods
   std::cout << "Name:" << this->getName() << std::endl;
@@ -53,7 +53,7 @@ void lp::stringVariable::write() const
   std::cout << "Value:" << this->getValue() << std::endl;
 }
 
-lp::stringVariable &lp::stringVariable::operator=(const lp::stringVariable &n)
+lp::StringVariable &lp::StringVariable::operator=(const lp::StringVariable &n)
   {
  	// Check that is not the current object
 		if (this != &n) 
@@ -80,7 +80,7 @@ lp::stringVariable &lp::stringVariable::operator=(const lp::stringVariable &n)
 */
 namespace lp{
 
-std::istream &operator>>(std::istream &i, lp::stringVariable &n)
+std::istream &operator>>(std::istream &i, lp::StringVariable &n)
 {
   // Inherited attributes
   i >> n._name;
@@ -129,7 +129,7 @@ std::istream &operator>>(std::istream &i, lp::stringVariable &n)
 }
 
 
-std::ostream &operator<<(std::ostream &o, lp::stringVariable const &n)
+std::ostream &operator<<(std::ostream &o, lp::StringVariable const &n)
 {
   // Inherited attributes
   o << n._name << std::endl;

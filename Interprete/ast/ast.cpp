@@ -1331,6 +1331,54 @@ void lp::ReadStmt::evaluate()
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+void lp::ReadStringStmt::printAST() 
+{
+  std::cout << "ReadStringStmt: read_string"  << std::endl;
+  std::cout << "\t";
+  std::cout << this->_id;
+  std::cout << std::endl;
+}
+
+
+void lp::ReadStringStmt::evaluate() 
+{   
+	std::string value;
+	std::cout << BIYELLOW; 
+	std::cout << "Insert a string --> " ;
+	std::cout << RESET; 
+	std::getline(std::cin, value);
+
+	/* Get the identifier in the table of symbols as Variable */
+	lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+	// Check if the type of the variable is STRING
+	if (var->getType() == STRING)
+	{
+		/* Get the identifier in the table of symbols as StringVariable */
+		lp::StringVariable *s = (lp::StringVariable *) table.getSymbol(this->_id);
+						
+		/* Assignment the read value to the identifier */
+		s->setValue(value);
+	}
+	// The type of variable is not STRING
+	else
+	{
+		// Delete $1 from the table of symbols as Variable
+		table.eraseSymbol(this->_id);
+
+		// Insert $1 in the table of symbols as StringVariable
+		// with the type STRING and the read value 
+		lp::StringVariable *s = new lp::StringVariable(this->_id, 
+									  VARIABLE,STRING,value);
+
+		table.installSymbol(s);
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 void lp::EmptyStmt::printAST() 
 {
   std::cout << "EmptyStmt "  << std::endl;
