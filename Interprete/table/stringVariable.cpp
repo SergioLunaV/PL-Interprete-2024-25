@@ -1,6 +1,6 @@
 /*!
-    \file    alphanumericVariable.cpp
-    \brief   Code of some functions of AlphanumericVariable class
+    \file    stringVariable.cpp
+    \brief   Code of some functions of stringVariable class
     \author
     \date    2025-06-09
     \version 1.0
@@ -11,38 +11,38 @@
 // Delete the comment if you want to use atof in the operator overload >>
 // #include <stdlib.h>
 
-#include "alphanumericVariable.hpp"
+#include "stringVariable.hpp"
 
 
 /*
- Definitions of the read and write functions of the AlphanumericVariable class
+ Definitions of the read and write functions of the stringVariable class
 */
 
-void lp::AlphanumericVariable::read()
+void lp::stringVariable::read()
 {
     // Inherited attributes
-    std::cout << "Name of the AlphanumericVariable: ";
+    std::cout << "Name of the stringVariable: ";
     std::cin >> this->_name;
  
-    std::cout << "Token of the AlphanumericVariable: ";
+    std::cout << "Token of the stringVariable: ";
     std::cin >> this->_token;
     // The \n character is read 
     std::cin.ignore(); 
  
-    std::cout << "Type of the AlphanumericVariable: ";
+    std::cout << "Type of the stringVariable: ";
     std::cin >> this->_type;
     // The \n character is read 
     std::cin.ignore(); 
  
  
     // Own attribute
-    std::cout << "Value of the AlphanumericVariable: ";
+    std::cout << "Value of the stringVariable: ";
     std::cin >> this->_value;
     // The \n character is read 
     std::cin.ignore(); 
 }
 
-void lp::AlphanumericVariable::write() const
+void lp::stringVariable::write() const
 {
   // Inherited methods
   std::cout << "Name:" << this->getName() << std::endl;
@@ -53,7 +53,7 @@ void lp::AlphanumericVariable::write() const
   std::cout << "Value:" << this->getValue() << std::endl;
 }
 
-lp::AlphanumericVariable &lp::AlphanumericVariable::operator=(const lp::AlphanumericVariable &n)
+lp::stringVariable &lp::stringVariable::operator=(const lp::stringVariable &n)
   {
  	// Check that is not the current object
 		if (this != &n) 
@@ -80,7 +80,7 @@ lp::AlphanumericVariable &lp::AlphanumericVariable::operator=(const lp::Alphanum
 */
 namespace lp{
 
-std::istream &operator>>(std::istream &i, lp::AlphanumericVariable &n)
+std::istream &operator>>(std::istream &i, lp::stringVariable &n)
 {
   // Inherited attributes
   i >> n._name;
@@ -129,7 +129,7 @@ std::istream &operator>>(std::istream &i, lp::AlphanumericVariable &n)
 }
 
 
-std::ostream &operator<<(std::ostream &o, lp::AlphanumericVariable const &n)
+std::ostream &operator<<(std::ostream &o, lp::stringVariable const &n)
 {
   // Inherited attributes
   o << n._name << std::endl;

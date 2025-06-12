@@ -51,6 +51,12 @@
 #include "../table/logicalVariable.hpp"
 
 /*******************************************/
+/* Added by Sergio */
+#include "../table/stringVariable.hpp"
+/*******************************************/
+
+
+/*******************************************/
 /* NEW in example 11 */
 #include "../table/numericConstant.hpp"
 /*******************************************/
@@ -331,7 +337,7 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// $$ = $1;
 	 }
 	/* Added by Sergio */
-	| clear_screen
+	| clear_screen SEMICOLON
 	{
 		// Default action
 		// $$ = $1;
@@ -353,7 +359,7 @@ repeat: REPEAT controlSymbol stmtlist UNTIL cond SEMICOLON
 			control--;
 		}
 
-clear_screen: TOKEN_CLEARSCREEN SEMICOLON
+clear_screen: TOKEN_CLEARSCREEN
 		{
 			// Create a new clear screen node
 			$$ = new lp::ClearScreenStmt();

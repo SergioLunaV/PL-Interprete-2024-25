@@ -19,7 +19,7 @@ CFLAGS = -c -g  -Wall -ansi -O2
 # MODIFIED in example 12: keyword.o
 # MODIFIED in example 13: builtin.o builtinParameter1.o mathFunction.o
 # MODIFIED in example 14: builtinParameter0.o builtinParameter2.o 
-# Modified by Sergio: alphanumericVariable.0
+# Modified by Sergio: stringVariable.o
 OBJECTS= table.o symbol.o variable.o numericVariable.o \
 		init.o \
 		constant.o numericConstant.o \
@@ -27,7 +27,7 @@ OBJECTS= table.o symbol.o variable.o numericVariable.o \
 		builtin.o builtinParameter1.o mathFunction.o \
 		builtinParameter0.o builtinParameter2.o \
 		logicalVariable.o logicalConstant.o \
-		alphanumericVariable.o
+		stringVariable.o
 
 # Predefined macros 
 #
