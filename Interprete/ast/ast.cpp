@@ -117,6 +117,29 @@ bool lp::VariableNode::evaluateBool()
 	return result;
 }
 
+// Added by Sergio
+std::string lp::VariableNode::evaluateString() 
+{ 
+	std::string result = "";
+
+	if (this->getType() == STRING)
+	{
+		// Get the identifier in the table of symbols as StringVariable
+		lp::StringVariable *var = (lp::StringVariable *) table.getSymbol(this->_id);
+
+		// Copy the value of the StringVariable
+		result = var->getValue();
+	}
+	else
+	{
+		warning("Runtime error in evaluateString(): the variable is not string",
+				   this->_id);
+	}
+
+	// Return the value of the StringVariable
+	return result;
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1273,7 +1296,10 @@ void lp::PrintStmt::evaluate()
 				std::cout << "false" << std::endl;
 		
 			break;
-
+		/* Added by Sergio */
+		case STRING:
+			std::cout << this->_exp->evaluateString() << std::endl;
+			break;
 		default:
 			warning("Runtime error: incompatible type for ", "print");
 	}
@@ -1330,6 +1356,7 @@ void lp::ReadStmt::evaluate()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
 
 void lp::ReadStringStmt::printAST() 
 {

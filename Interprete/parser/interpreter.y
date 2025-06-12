@@ -206,7 +206,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*******************************************/
 
 /*******************************************/
-/* NEW in example 15 */
+/* Added by Sergio */
 %token <string> STRING
 /*******************************************/
 

@@ -69,6 +69,18 @@ namespace lp
 		return false;
 	}
 
+	// Added by Sergio
+	/*!	
+		\brief   Evaluate the expression as STRING
+		\warning Virtual function: could be redefined in the heir classes
+		\return  std::string
+		\sa		   getType, printAST, evaluateNumber, evaluateBool
+	*/
+	virtual std::string evaluateString()
+	{
+		return "";
+	}
+
 };
 
 
@@ -108,7 +120,7 @@ class VariableNode : public ExpNode
 	/*!
 		\brief   Print the AST for Variable
 		\return  void
-		\sa		   getType, evaluateNumber, evaluateBool
+		\sa		   getType, evaluateNumber, evaluateBool, evaluateString
 	*/
 	  void printAST();
 
@@ -122,9 +134,17 @@ class VariableNode : public ExpNode
 	/*!	
 		\brief   Evaluate the Variable as BOOL
 		\return  bool
-		\sa		   getType, printAST, evaluateNumber
+		\sa		   getType, printAST, evaluateNumber, evaluateBool
 	*/
 	  bool evaluateBool();
+
+	// Added by Sergio
+	/*!
+		\brief   Evaluate the Variable as STRING
+		\return  std::string
+		\sa		   getType, printAST, evaluateNumber, evaluateBool
+	*/
+	  std::string evaluateString();
 
 };
 
