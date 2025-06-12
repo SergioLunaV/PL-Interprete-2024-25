@@ -500,6 +500,12 @@ exp:	NUMBER
 			// Create a new number node
 			$$ = new lp::NumberNode($1);
 		}
+	// Added by Sergio
+	| STRING 
+		{ 
+			// Create a new string node
+			$$ = new lp::StringNode($1);
+		}
 
 	| 	exp PLUS exp 
 		{ 

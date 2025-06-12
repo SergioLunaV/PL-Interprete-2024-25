@@ -67,6 +67,8 @@ NUMBER   ({NUMBER1}|{NUMBER2}){EXPONENT}?
 
 IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 
+STRING	'([^'\\]|\\.)*'
+
 /* NEW in example 3 */
 /* STATE  */
 %x ERROR
@@ -94,6 +96,23 @@ IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 ","		{
 			/* NEW in example 14 */
 			return COMMA;
+		}
+
+{STRING}	{
+			/* Added by Sergio */
+
+			std::string str(yytext+1, yyleng-2); // Remove the quotes
+
+			// TODO: Interpret \n, \t and \'
+
+			/* 
+				The string is stored in yylval.string, which is a pointer to a char array
+				created with strdup() function
+			*/
+			yylval.string = strdup(str.c_str());
+
+			/* Return the token STRING */
+			return STRING; 
 		}
 
 {NUMBER}  	{

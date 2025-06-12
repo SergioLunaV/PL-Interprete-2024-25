@@ -226,6 +226,28 @@ double lp::NumberNode::evaluateNumber()
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+int lp::StringNode::getType()
+{
+	return STRING;
+}
+
+
+void lp::StringNode::printAST()
+{
+  std::cout << "StringNode: " << this->_string << std::endl;
+}
+
+std::string lp::StringNode::evaluateString() 
+{ 
+    return this->_string; 
+}
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 int lp::NumericUnaryOperatorNode::getType()
@@ -1174,6 +1196,36 @@ void lp::AssignmentStmt::evaluate()
 				}
 			}
 			break;
+			// Added by Sergio
+			case STRING:
+			{
+				std::string value;
+				// Evaluate the expression as STRING
+			 	value = this->_exp->evaluateString();
+
+				if (firstVar->getType() == STRING)
+				{
+				  	// Get the identifier in the table of symbols as StringVariable
+					lp::StringVariable *v = (lp::StringVariable *) table.getSymbol(this->_id);
+
+					// Assignment the value to the identifier in the table of symbols
+					v->setValue(value);
+				}
+				// The type of variable is not STRING
+				else
+				{
+					// Delete the variable from the table of symbols 
+					table.eraseSymbol(this->_id);
+
+					// Insert the variable in the table of symbols as StringVariable 
+					// with the type STRING and the value 
+					lp::StringVariable *v = new lp::StringVariable(this->_id,
+											VARIABLE,STRING,value);
+					table.installSymbol(v);
+				}
+
+			}
+			break;
 
 			default:
 				warning("Runtime error: incompatible type of expression for ", "Assigment");
@@ -1256,6 +1308,12 @@ void lp::AssignmentStmt::evaluate()
 											VARIABLE,BOOL,secondVar->getValue());
 					table.installSymbol(firstVar);
 				}
+			}
+			break;
+
+			case STRING:
+			{
+				// TODO: fill
 			}
 			break;
 
@@ -1606,7 +1664,7 @@ void lp::PlaceStmt::evaluate()
   }
   else
   {
-	// TODO: Call warning function
+	warning("Runtime error: incompatible types for ", "Place");
   }
 }
 
