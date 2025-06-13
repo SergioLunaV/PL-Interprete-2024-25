@@ -80,25 +80,26 @@ extern int yydebug;
     UNDEFINED = 281,               /* UNDEFINED  */
     CONSTANT = 282,                /* CONSTANT  */
     BUILTIN = 283,                 /* BUILTIN  */
-    OR = 284,                      /* OR  */
-    AND = 285,                     /* AND  */
-    GREATER_OR_EQUAL = 286,        /* GREATER_OR_EQUAL  */
-    LESS_OR_EQUAL = 287,           /* LESS_OR_EQUAL  */
-    GREATER_THAN = 288,            /* GREATER_THAN  */
-    LESS_THAN = 289,               /* LESS_THAN  */
-    EQUAL = 290,                   /* EQUAL  */
-    NOT_EQUAL = 291,               /* NOT_EQUAL  */
-    NOT = 292,                     /* NOT  */
-    PLUS = 293,                    /* PLUS  */
-    MINUS = 294,                   /* MINUS  */
-    MULTIPLICATION = 295,          /* MULTIPLICATION  */
-    DIVISION = 296,                /* DIVISION  */
-    MODULO = 297,                  /* MODULO  */
-    INTEGER_DIVISION = 298,        /* INTEGER_DIVISION  */
-    LPAREN = 299,                  /* LPAREN  */
-    RPAREN = 300,                  /* RPAREN  */
-    UNARY = 301,                   /* UNARY  */
-    POWER = 302                    /* POWER  */
+    CONCATENATION = 284,           /* CONCATENATION  */
+    OR = 285,                      /* OR  */
+    AND = 286,                     /* AND  */
+    GREATER_OR_EQUAL = 287,        /* GREATER_OR_EQUAL  */
+    LESS_OR_EQUAL = 288,           /* LESS_OR_EQUAL  */
+    GREATER_THAN = 289,            /* GREATER_THAN  */
+    LESS_THAN = 290,               /* LESS_THAN  */
+    EQUAL = 291,                   /* EQUAL  */
+    NOT_EQUAL = 292,               /* NOT_EQUAL  */
+    NOT = 293,                     /* NOT  */
+    PLUS = 294,                    /* PLUS  */
+    MINUS = 295,                   /* MINUS  */
+    MULTIPLICATION = 296,          /* MULTIPLICATION  */
+    DIVISION = 297,                /* DIVISION  */
+    MODULO = 298,                  /* MODULO  */
+    INTEGER_DIVISION = 299,        /* INTEGER_DIVISION  */
+    LPAREN = 300,                  /* LPAREN  */
+    RPAREN = 301,                  /* RPAREN  */
+    UNARY = 302,                   /* UNARY  */
+    POWER = 303                    /* POWER  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -118,7 +119,7 @@ union YYSTYPE
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
 
-#line 122 "interpreter.tab.h"
+#line 123 "interpreter.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

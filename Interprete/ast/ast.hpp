@@ -621,6 +621,39 @@ class LogicalOperatorNode : public OperatorNode
 	int getType();
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+/*!	
+  \class   StringOperatorNode
+  \brief   Definition of atributes and methods of StringOperatorNode class
+  \note    StringOperatorNode Class publicly inherits from OperatorNode class
+  \warning Abstract class, because it does not redefine the printAST method of ExpNode
+*/
+class StringOperatorNode : public OperatorNode 
+{
+	public:
+
+	/*!		
+		\brief Constructor of StringOperatorNode uses OperatorNode's constructor as members initializer
+		\param L: pointer to ExpNode
+		\param R: pointer to ExpNode
+		\post  A new StringOperatorNode is created with the parameters
+	*/
+    StringOperatorNode(ExpNode *L, ExpNode *R): OperatorNode(L,R) 
+	{
+		//	Empty
+	}
+
+	/*!	
+	\brief   Get the type of the children expressions
+	\return  int
+	*/
+	int getType();
+};
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1408,6 +1441,48 @@ class OrNode : public LogicalOperatorNode
 	\sa		 printAST()
 */
   bool evaluateBool();
+};
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/*!	
+  \class   ConcatenationNode
+  \brief   Definition of atributes and methods of ConcatenationNode class
+  \note    ConcatenationNode Class publicly inherits from StringOperatorNode class 
+		       and adds its own printAST and evaluate functions
+*/
+class ConcatenationNode : public StringOperatorNode 
+{
+  public:
+
+/*!		
+	\brief Constructor of ConcatenationNode uses StringOperatorNode's constructor as members initializer
+	\param L: pointer to ExpNode
+	\param R: pointer to ExpNode
+	\post  A new ConcatenationNode is created with the parameter
+*/
+  ConcatenationNode(ExpNode *L, ExpNode *R): StringOperatorNode(L,R) 
+  {
+		// Empty
+  }
+
+/*!
+	\brief   Print the AST for ConcatenationNode
+	\return  void
+	\sa		   evaluateBool
+*/
+  void printAST();
+
+/*!	
+	\brief   Evaluate the ConcatenationNode
+	\return  bool
+	\sa		   printAST
+*/
+  std::string evaluateString();
 };
 
 

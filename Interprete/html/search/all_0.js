@@ -17,8 +17,9 @@ var searchData=
   ['_5fstmts_14',['_stmts',['../classlp_1_1WhileStmt.html#a605cee159186504d7606839e266cd325',1,'lp::WhileStmt::_stmts()'],['../classlp_1_1RepeatStmt.html#a28ba69ad2ec04f754ddd9f975a430d54',1,'lp::RepeatStmt::_stmts()'],['../classlp_1_1BlockStmt.html#aeda6cb4e3afca853289924a625327f35',1,'lp::BlockStmt::_stmts()']]],
   ['_5fstmts1_15',['_stmts1',['../classlp_1_1IfStmt.html#a5b95d970390595b66c9efd0aabfb17c4',1,'lp::IfStmt']]],
   ['_5fstmts2_16',['_stmts2',['../classlp_1_1IfStmt.html#ad1fdd8ee34fbbfb79cea251c55d104c6',1,'lp::IfStmt']]],
-  ['_5ftable_17',['_table',['../classlp_1_1Table.html#a07b5cf9cf7e3c94376d845ac89b2cdcd',1,'lp::Table']]],
-  ['_5ftoken_18',['_token',['../classlp_1_1Symbol.html#a1256421f0ff4d09cea3a51a52b04e932',1,'lp::Symbol']]],
-  ['_5ftype_19',['_type',['../classlp_1_1Constant.html#aba79e5bad7b43b71f26ac6cdef5b6296',1,'lp::Constant::_type()'],['../classlp_1_1Variable.html#a9a6b5251c533519733814f53664af2e9',1,'lp::Variable::_type()']]],
-  ['_5fvalue_20',['_value',['../classlp_1_1LogicalConstant.html#a6937e7912beb32b75ef9afe8b6251ff8',1,'lp::LogicalConstant::_value()'],['../classlp_1_1LogicalVariable.html#a25d54a689e785a3ea690efac373da3f2',1,'lp::LogicalVariable::_value()'],['../classlp_1_1NumericConstant.html#ae7a9c9a6d09518a17ca9570782f4a141',1,'lp::NumericConstant::_value()'],['../classlp_1_1NumericVariable.html#a165ee7b8dd4ff51a51ea3eed3541f72f',1,'lp::NumericVariable::_value()'],['../classlp_1_1StringVariable.html#a4e0302f34de59b7464dbcd025d368613',1,'lp::StringVariable::_value()']]]
+  ['_5fstring_17',['_string',['../classlp_1_1StringNode.html#acc74f8fb3b048e199f05a85d2385e485',1,'lp::StringNode']]],
+  ['_5ftable_18',['_table',['../classlp_1_1Table.html#a07b5cf9cf7e3c94376d845ac89b2cdcd',1,'lp::Table']]],
+  ['_5ftoken_19',['_token',['../classlp_1_1Symbol.html#a1256421f0ff4d09cea3a51a52b04e932',1,'lp::Symbol']]],
+  ['_5ftype_20',['_type',['../classlp_1_1Constant.html#aba79e5bad7b43b71f26ac6cdef5b6296',1,'lp::Constant::_type()'],['../classlp_1_1Variable.html#a9a6b5251c533519733814f53664af2e9',1,'lp::Variable::_type()']]],
+  ['_5fvalue_21',['_value',['../classlp_1_1LogicalConstant.html#a6937e7912beb32b75ef9afe8b6251ff8',1,'lp::LogicalConstant::_value()'],['../classlp_1_1LogicalVariable.html#a25d54a689e785a3ea690efac373da3f2',1,'lp::LogicalVariable::_value()'],['../classlp_1_1NumericConstant.html#ae7a9c9a6d09518a17ca9570782f4a141',1,'lp::NumericConstant::_value()'],['../classlp_1_1NumericVariable.html#a165ee7b8dd4ff51a51ea3eed3541f72f',1,'lp::NumericVariable::_value()'],['../classlp_1_1StringVariable.html#a4e0302f34de59b7464dbcd025d368613',1,'lp::StringVariable::_value()']]]
 ];

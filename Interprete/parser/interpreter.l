@@ -206,6 +206,7 @@ STRING	'([^'\\]|\\.)*'
 
 "}"		{ return RIGHTCURLYBRACKET; }	/* NEW in example 17 */
 
+"||"	{ return CONCATENATION; } 	/* Added by Sergio */
 
 <<EOF>> { /* The interpreter finishes when finds the end of file character */
 		/*  PLACE(24,10);

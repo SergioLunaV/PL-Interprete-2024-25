@@ -219,6 +219,10 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /* Left associativity */
 
 /*******************************************************/
+/* Added by Sergio */
+%left CONCATENATION
+
+/*******************************************************/
 /* NEW in example 15 */
 %left OR
 
@@ -506,6 +510,12 @@ exp:	NUMBER
 			// Create a new string node
 			$$ = new lp::StringNode($1);
 		}
+		// Added by Sergio
+	| 	exp CONCATENATION exp
+		{
+			// Create a new concatenation node
+			$$ = new lp::ConcatenationNode($1, $3);
+	 	}
 
 	| 	exp PLUS exp 
 		{ 

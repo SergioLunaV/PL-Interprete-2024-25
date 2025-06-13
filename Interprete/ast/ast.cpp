@@ -341,6 +341,23 @@ int lp::LogicalOperatorNode:: getType()
 	return	result;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+int lp::StringOperatorNode:: getType()
+{
+	int result = 0;
+		
+	if ( (this->_left->getType() == STRING) and (this->_right->getType() == STRING))
+	{
+		result = STRING;
+	}
+	else
+		warning("Runtime error: incompatible types for", "String Operator");
+
+	return	result;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1176,6 +1193,40 @@ bool lp::OrNode::evaluateBool()
 	else
 	{
 		warning("Runtime error: incompatible types of parameters for ", "operator Or");
+	}
+
+	return result;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+void lp::ConcatenationNode::printAST()
+{
+  std::cout << "ConcatenationNode: ||" << std::endl;
+  std::cout << "\t"; 
+	this->_left->printAST();
+	std::cout << "\t"; 
+	this->_right->printAST();
+}
+
+std::string lp::ConcatenationNode::evaluateString() 
+{
+	std::string result = "";
+
+	if (this->getType() == STRING)
+	{
+		std::string leftBool, rightBool;
+
+		leftBool = this->_left->evaluateString();
+		rightBool = this->_right->evaluateString();
+
+		result = leftBool + rightBool;
+	}
+	else
+	{
+		warning("Runtime error: incompatible types of parameters for ", "operator And");
 	}
 
 	return result;
