@@ -313,6 +313,9 @@ int lp::RelationalOperatorNode::getType()
 		result = BOOL;
 	else if ( (this->_left->getType() == BOOL) and (this->_right->getType() == BOOL))
 		result = BOOL;
+  // Added by Sergio
+	else if( (this->_left->getType() == STRING) and (this->_right->getType() == STRING))
+		result = BOOL;
 	else
 		warning("Runtime error: incompatible types for", "Relational Operator");
 
@@ -919,23 +922,38 @@ bool lp::EqualNode::evaluateBool()
 
 	if (this->getType() == BOOL)
 	{
-		switch(this->_left->getType()){
+		switch(this->_left->getType())
+		{
 			case NUMBER:
+			{
 				double leftNumber, rightNumber;
 				leftNumber = this->_left->evaluateNumber();
 				rightNumber = this->_right->evaluateNumber();
 
 				// ERROR_BOUND to control the precision of real numbers
 				result = ( std::abs(leftNumber - rightNumber) < ERROR_BOUND );
+			}
 			break;
 			case BOOL:
+			{
 				bool leftBoolean, rightBoolean;
 				leftBoolean = this->_left->evaluateBool();
 				rightBoolean = this->_right->evaluateBool();
 
 				// 
 				result = (leftBoolean == rightBoolean);
-				break;
+			}
+			break;
+			// Added by Sergio
+			case STRING:
+			{
+				std::string leftString, rightString;
+				leftString = this->_left->evaluateString();
+				rightString = this->_right->evaluateString();
+
+				result = (leftString == rightString);
+			}
+			break;
 		  default:
 				warning("Runtime error: incompatible types of parameters for ", 
 								"Equal operator");				
