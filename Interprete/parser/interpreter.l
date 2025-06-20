@@ -99,17 +99,37 @@ STRING	'([^'\\]|\\.)*'
 		}
 
 {STRING}	{
-			/* Added by Sergio */
+			/* Added by Sergio: Remove quotes and interpret escape sequences */
 
-			std::string str(yytext+1, yyleng-2); // Remove the quotes
+			std::string str(yytext+1, yyleng-2); 
+						
+			std::string result;
 
-			// TODO: Interpret \n, \t and \'
+			for (size_t i = 0; i < str.length(); ++i)
+			{
+				if (str[i] == '\\' && i + 1 < str.length())
+				{
+					switch (str[i + 1]) 
+					{
+						case 'n':  result += '\n'; break;
+						case 't':  result += '\t'; break;
+						case '\\': result += '\\'; break;
+						case '\'': result += '\''; break;
+						
+						default:   result += str[i + 1]; break;
+					}
+					++i;
+				} else 
+				{
+					result += str[i];
+				}
+			}
 
 			/* 
 				The string is stored in yylval.string, which is a pointer to a char array
 				created with strdup() function
 			*/
-			yylval.string = strdup(str.c_str());
+			yylval.string = strdup(result.c_str());
 
 			/* Return the token STRING */
 			return STRING; 

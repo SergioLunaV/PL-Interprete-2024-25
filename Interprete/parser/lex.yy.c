@@ -752,17 +752,37 @@ case 5:
 YY_RULE_SETUP
 #line 101 "interpreter.l"
 {
-			/* Added by Sergio */
+			/* Added by Sergio: Remove quotes and interpret escape sequences */
 
-			std::string str(yytext+1, yyleng-2); // Remove the quotes
+			std::string str(yytext+1, yyleng-2); 
+						
+			std::string result;
 
-			// TODO: Interpret \n, \t and \'
+			for (size_t i = 0; i < str.length(); ++i)
+			{
+				if (str[i] == '\\' && i + 1 < str.length())
+				{
+					switch (str[i + 1]) 
+					{
+						case 'n':  result += '\n'; break;
+						case 't':  result += '\t'; break;
+						case '\\': result += '\\'; break;
+						case '\'': result += '\''; break;
+						
+						default:   result += str[i + 1]; break;
+					}
+					++i;
+				} else 
+				{
+					result += str[i];
+				}
+			}
 
 			/* 
 				The string is stored in yylval.string, which is a pointer to a char array
 				created with strdup() function
 			*/
-			yylval.string = strdup(str.c_str());
+			yylval.string = strdup(result.c_str());
 
 			/* Return the token STRING */
 			return STRING; 
@@ -770,7 +790,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 118 "interpreter.l"
+#line 138 "interpreter.l"
 {
 				/* MODIFIED in example 4 */
 				/* Conversion of type and sending of the numerical value to the parser */
@@ -781,7 +801,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 127 "interpreter.l"
+#line 147 "interpreter.l"
 {
 
 						for (int i=0; yytext[i] != '\0'; i++)
@@ -835,97 +855,97 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 178 "interpreter.l"
+#line 198 "interpreter.l"
 { return MINUS;  } 			/* NEW in example 3 */
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 179 "interpreter.l"
+#line 199 "interpreter.l"
 { return PLUS;   } 			/* NEW in example 3 */
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 181 "interpreter.l"
+#line 201 "interpreter.l"
 { return MULTIPLICATION; } 	/* NEW in example 3 */
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 182 "interpreter.l"
+#line 202 "interpreter.l"
 {return INTEGER_DIVISION; }	/* Added by Sergio */
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 183 "interpreter.l"
+#line 203 "interpreter.l"
 { return DIVISION; } 		/* NEW in example 3 */
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 185 "interpreter.l"
+#line 205 "interpreter.l"
 { return LPAREN; } 			/* NEW in example 3 */
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 186 "interpreter.l"
+#line 206 "interpreter.l"
 { return RPAREN; } 			/* NEW in example 3 */
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 188 "interpreter.l"
+#line 208 "interpreter.l"
 { return POWER; }			/* NEW in example 5 */
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 190 "interpreter.l"
+#line 210 "interpreter.l"
 { return ASSIGNMENT; }		/* NEW in example 7, modified by Sergio */
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 193 "interpreter.l"
+#line 213 "interpreter.l"
 { return EQUAL; }			/* NEW in example 15 */
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 195 "interpreter.l"
+#line 215 "interpreter.l"
 { return NOT_EQUAL; }		/* NEW in example 15 */
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 197 "interpreter.l"
+#line 217 "interpreter.l"
 { return GREATER_OR_EQUAL; }/* NEW in example 15 */
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 199 "interpreter.l"
+#line 219 "interpreter.l"
 { return LESS_OR_EQUAL; }	/* NEW in example 15 */
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 201 "interpreter.l"
+#line 221 "interpreter.l"
 { return GREATER_THAN; }	/* NEW in example 15 */
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 203 "interpreter.l"
+#line 223 "interpreter.l"
 { return LESS_THAN; }		/* NEW in example 15 */
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 205 "interpreter.l"
+#line 225 "interpreter.l"
 { return LEFTCURLYBRACKET; } 	/* NEW in example 17 */
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 207 "interpreter.l"
+#line 227 "interpreter.l"
 { return RIGHTCURLYBRACKET; }	/* NEW in example 17 */
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 209 "interpreter.l"
+#line 229 "interpreter.l"
 { return CONCATENATION; } 	/* Added by Sergio */
 	YY_BREAK
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(ERROR):
-#line 211 "interpreter.l"
+#line 231 "interpreter.l"
 { /* The interpreter finishes when finds the end of file character */
 		/*  PLACE(24,10);
 	  	  std::cout <<  BICYAN;
@@ -939,7 +959,7 @@ case YY_STATE_EOF(ERROR):
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 223 "interpreter.l"
+#line 243 "interpreter.l"
 { 	
 									/* Any other character */
 									/* MODIFIIED in example 3 */
@@ -955,7 +975,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 236 "interpreter.l"
+#line 256 "interpreter.l"
 { /* MODIFIED in examples 5, 7, 15, and by Sergio */
 								  /* NEW in example 3 */
 								  /* 
@@ -967,7 +987,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 245 "interpreter.l"
+#line 265 "interpreter.l"
 { 
 								/* NEW in example 3 */
 								/* Rewind one position */
@@ -982,10 +1002,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 256 "interpreter.l"
+#line 276 "interpreter.l"
 ECHO;
 	YY_BREAK
-#line 989 "lex.yy.c"
+#line 1009 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -1873,6 +1893,6 @@ int main()
 	return 0;
 	}
 #endif
-#line 256 "interpreter.l"
+#line 276 "interpreter.l"
 
 

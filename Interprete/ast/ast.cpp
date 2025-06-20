@@ -1590,11 +1590,35 @@ void lp::ReadStringStmt::printAST()
 
 void lp::ReadStringStmt::evaluate() 
 {   
-	std::string value;
+	std::string str;
 	std::cout << BIYELLOW; 
 	std::cout << "Insert a string --> " ;
 	std::cout << RESET; 
-	std::getline(std::cin, value);
+	std::getline(std::cin, str);
+				
+	std::string value;
+
+	for (size_t i = 0; i < str.length(); ++i)
+	{
+		if (str[i] == '\\' && i + 1 < str.length())
+		{
+			switch (str[i + 1]) 
+			{
+				case 'n':  value += '\n'; break;
+				case 't':  value += '\t'; break;
+				case '\\': value += '\\'; break;
+				case '\'': value += '\''; break;
+				
+				default:   value += str[i + 1]; break;
+			}
+			++i;
+		} else 
+		{
+			value += str[i];
+		}
+	}
+	
+
 
 	/* Get the identifier in the table of symbols as Variable */
 	lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
