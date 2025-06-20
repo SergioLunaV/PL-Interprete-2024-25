@@ -1542,10 +1542,12 @@ void lp::ReadStmt::printAST()
 void lp::ReadStmt::evaluate() 
 {   
 	double value;
-	std::cout << BIYELLOW; 
-	std::cout << "Insert a numeric value --> " ;
-	std::cout << RESET; 
+	/* Modified by Sergio: Uncomment to print the message */
+	// std::cout << BIYELLOW; 
+	// std::cout << "Insert a numeric value --> " ;
+	// std::cout << RESET; 
 	std::cin >> value;
+	std::cin.ignore(); 
 
 	/* Get the identifier in the table of symbols as Variable */
 	lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
@@ -1591,9 +1593,10 @@ void lp::ReadStringStmt::printAST()
 void lp::ReadStringStmt::evaluate() 
 {   
 	std::string str;
-	std::cout << BIYELLOW; 
-	std::cout << "Insert a string --> " ;
-	std::cout << RESET; 
+	/* Modified by Sergio: Uncomment to print the message */
+	// std::cout << BIYELLOW; 
+	// std::cout << "Insert a string --> " ;
+	// std::cout << RESET; 
 	std::getline(std::cin, str);
 				
 	std::string value;

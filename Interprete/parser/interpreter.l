@@ -73,6 +73,9 @@ STRING	'([^'\\]|\\.)*'
 /* STATE  */
 %x ERROR
 
+/* Added by Sergio: comment states */
+%x COMMENT
+
 /*! \name REGULAR EXPRESSIONS  */
 %%
 
@@ -97,6 +100,40 @@ STRING	'([^'\\]|\\.)*'
 			/* NEW in example 14 */
 			return COMMA;
 		}
+
+#.*		{
+			/* Added by Sergio: One line comment */
+		}
+
+"(*"			{
+					/* Added by Sergio: Block comment */
+					BEGIN(COMMENT); /* change to Q1 */
+				}
+
+
+<COMMENT>"*)" 	{
+					/* Go back to INITIAL: */
+					BEGIN(INITIAL); /* change to INITIAL: default state */
+				}
+
+<COMMENT>"(*"	{
+					/* Error: nested comment */					
+					/* Display the error message */
+					warning("Lexical error: nested comments are not allowed", yytext);
+
+					/* Restore the initial state */
+					BEGIN(INITIAL);
+
+				}
+
+<COMMENT>\n     { 
+					/* Line counter */
+					lineNumber++; 
+				}
+
+<COMMENT>. 		{
+					/* Stay in COMMENT */
+				}
 
 {STRING}	{
 			/* Added by Sergio: Remove quotes and interpret escape sequences */
@@ -242,7 +279,7 @@ STRING	'([^'\\]|\\.)*'
 
 .								{ 	
 									/* Any other character */
-									/* MODIFIIED in example 3 */
+									/* MODIFIED in example 3 */
 									/* Change to error state */
 									BEGIN(ERROR); 
 
@@ -253,14 +290,14 @@ STRING	'([^'\\]|\\.)*'
 									yymore();  
 								}
 
-<ERROR>[^0-9+\-*/()\^% \t\n\;a-zA-Z:=<>!]	{ /* MODIFIED in examples 5, 7, 15, and by Sergio */
-								  /* NEW in example 3 */
-								  /* 
-									The current value of yytext 
-									will be concatenated with the next character
-								  */
-									yymore(); 
-								}
+<ERROR>[^0-9+\-*/()\^% \t\n\;a-zA-Z:=<>!|{}]	{ /* MODIFIED in examples 5, 7, 15, and by Sergio */
+													/* NEW in example 3 */
+													/* 
+														The current value of yytext 
+														will be concatenated with the next character
+													*/
+														yymore(); 
+												}
 
 <ERROR>(.|\n)                { 
 								/* NEW in example 3 */
@@ -274,4 +311,3 @@ STRING	'([^'\\]|\\.)*'
    								BEGIN(INITIAL);
 							}
 %%
-
