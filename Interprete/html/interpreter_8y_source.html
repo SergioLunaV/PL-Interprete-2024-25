@@ -522,12 +522,12 @@ $(function() {
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;       <span class="comment">/* NEW in example 11 */</span> </div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    | CONSTANT ASSIGNMENT exp </div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        {   </div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <a class="code" href="error_8cpp.html#a4f829608a6770ad4998f226129e06850">execerror</a>(<span class="stringliteral">&quot;Semantic error in assignment: it is not allowed to modify a constant &quot;</span>, $1);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            execerror(<span class="stringliteral">&quot;Semantic error in assignment: it is not allowed to modify a constant &quot;</span>, $1);</div>
 <div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        }</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;       <span class="comment">/* NEW in example 11 */</span> </div>
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    | CONSTANT ASSIGNMENT asgn </div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        {   </div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            <a class="code" href="error_8cpp.html#a4f829608a6770ad4998f226129e06850">execerror</a>(<span class="stringliteral">&quot;Semantic error in multiple assignment: it is not allowed to modify a constant &quot;</span>,$1);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            execerror(<span class="stringliteral">&quot;Semantic error in multiple assignment: it is not allowed to modify a constant &quot;</span>,$1);</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        }</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;;</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
@@ -547,7 +547,7 @@ $(function() {
 <div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;      <span class="comment">/* NEW rule in example 11 */</span></div>
 <div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    | READ LPAREN CONSTANT RPAREN  </div>
 <div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        {   </div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <a class="code" href="error_8cpp.html#a4f829608a6770ad4998f226129e06850">execerror</a>(<span class="stringliteral">&quot;Semantic error in \&quot;read statement\&quot;: it is not allowed to modify a constant &quot;</span>,$3);</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            execerror(<span class="stringliteral">&quot;Semantic error in \&quot;read statement\&quot;: it is not allowed to modify a constant &quot;</span>,$3);</div>
 <div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        }</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;;</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
@@ -573,7 +573,7 @@ $(function() {
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    |   exp CONCATENATION exp</div>
 <div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        {</div>
 <div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <span class="comment">// Create a new concatenation node</span></div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            <span class="comment">//$$ = new lp::ConcatenationNode($1, $3);</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            $$ = <span class="keyword">new</span> <a class="code" href="classlp_1_1ConcatenationNode.html">lp::ConcatenationNode</a>($1, $3);</div>
 <div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;        }</div>
 <div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
 <div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    |   exp PLUS exp </div>
@@ -689,11 +689,11 @@ $(function() {
 <div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;                        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
 <div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;                    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                             <a class="code" href="error_8cpp.html#a4f829608a6770ad4998f226129e06850">execerror</a>(<span class="stringliteral">&quot;Syntax error: too many parameters for function &quot;</span>, $1);</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;                             execerror(<span class="stringliteral">&quot;Syntax error: too many parameters for function &quot;</span>, $1);</div>
 <div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;                } </div>
 <div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;            }</div>
 <div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                 <a class="code" href="error_8cpp.html#a4f829608a6770ad4998f226129e06850">execerror</a>(<span class="stringliteral">&quot;Syntax error: incompatible number of parameters for function&quot;</span>, $1);</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;                 execerror(<span class="stringliteral">&quot;Syntax error: incompatible number of parameters for function&quot;</span>, $1);</div>
 <div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        }</div>
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;    | exp GREATER_THAN exp</div>
@@ -801,6 +801,7 @@ $(function() {
 <div class="ttc" id="aclasslp_1_1Builtin_html"><div class="ttname"><a href="classlp_1_1Builtin.html">lp::Builtin</a></div><div class="ttdoc">Definition of atributes and methods of Builtin class.</div><div class="ttdef"><b>Definition:</b> <a href="builtin_8hpp_source.html#l00029">builtin.hpp:30</a></div></div>
 <div class="ttc" id="aclasslp_1_1Builtin_html_a9506e057d9727dd9c94c43aa4d51a2e2"><div class="ttname"><a href="classlp_1_1Builtin.html#a9506e057d9727dd9c94c43aa4d51a2e2">lp::Builtin::getNParameters</a></div><div class="ttdeci">int getNParameters() const</div><div class="ttdoc">Public method that returns the nParameters of the Builtin.</div><div class="ttdef"><b>Definition:</b> <a href="builtin_8hpp_source.html#l00092">builtin.hpp:92</a></div></div>
 <div class="ttc" id="aclasslp_1_1ClearScreenStmt_html"><div class="ttname"><a href="classlp_1_1ClearScreenStmt.html">lp::ClearScreenStmt</a></div><div class="ttdoc">Definition of atributes and methods of ClearScreenStmt class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l02001">ast.hpp:2002</a></div></div>
+<div class="ttc" id="aclasslp_1_1ConcatenationNode_html"><div class="ttname"><a href="classlp_1_1ConcatenationNode.html">lp::ConcatenationNode</a></div><div class="ttdoc">Definition of atributes and methods of ConcatenationNode class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l01458">ast.hpp:1459</a></div></div>
 <div class="ttc" id="aclasslp_1_1ConstantNode_html"><div class="ttname"><a href="classlp_1_1ConstantNode.html">lp::ConstantNode</a></div><div class="ttdoc">Definition of atributes and methods of ConstantNode class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l00159">ast.hpp:160</a></div></div>
 <div class="ttc" id="aclasslp_1_1DivisionNode_html"><div class="ttname"><a href="classlp_1_1DivisionNode.html">lp::DivisionNode</a></div><div class="ttdoc">Definition of atributes and methods of DivisionNode class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l00786">ast.hpp:787</a></div></div>
 <div class="ttc" id="aclasslp_1_1EmptyStmt_html"><div class="ttname"><a href="classlp_1_1EmptyStmt.html">lp::EmptyStmt</a></div><div class="ttdoc">Definition of atributes and methods of EmptyStmt class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l01758">ast.hpp:1759</a></div></div>
@@ -834,7 +835,6 @@ $(function() {
 <div class="ttc" id="aclasslp_1_1UnaryPlusNode_html"><div class="ttname"><a href="classlp_1_1UnaryPlusNode.html">lp::UnaryPlusNode</a></div><div class="ttdoc">Definition of atributes and methods of UnaryPlusNode class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l00463">ast.hpp:464</a></div></div>
 <div class="ttc" id="aclasslp_1_1VariableNode_html"><div class="ttname"><a href="classlp_1_1VariableNode.html">lp::VariableNode</a></div><div class="ttdoc">Definition of atributes and methods of VariableNode class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l00095">ast.hpp:96</a></div></div>
 <div class="ttc" id="aclasslp_1_1WhileStmt_html"><div class="ttname"><a href="classlp_1_1WhileStmt.html">lp::WhileStmt</a></div><div class="ttdoc">Definition of atributes and methods of WhileStmt class.</div><div class="ttdef"><b>Definition:</b> <a href="ast_8hpp_source.html#l01866">ast.hpp:1867</a></div></div>
-<div class="ttc" id="aerror_8cpp_html_a4f829608a6770ad4998f226129e06850"><div class="ttname"><a href="error_8cpp.html#a4f829608a6770ad4998f226129e06850">execerror</a></div><div class="ttdeci">void execerror(std::string errorMessage1, std::string errorMessage2)</div><div class="ttdoc">Run time error recovery function.</div><div class="ttdef"><b>Definition:</b> <a href="error_8cpp_source.html#l00053">error.cpp:53</a></div></div>
 <div class="ttc" id="ainterpreter_8y_html_a13f3991d45154aa44f37dc1a4703e97f"><div class="ttname"><a href="interpreter_8y.html#a13f3991d45154aa44f37dc1a4703e97f">progname</a></div><div class="ttdeci">std::string progname</div><div class="ttdoc">Program name.</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8cpp_source.html#l00045">interpreter.cpp:45</a></div></div>
 <div class="ttc" id="ainterpreter_8y_html_a1c3671f774276086f0b06f52dea5d4a8"><div class="ttname"><a href="interpreter_8y.html#a1c3671f774276086f0b06f52dea5d4a8">table</a></div><div class="ttdeci">lp::Table table</div><div class="ttdoc">Extern Table of Symbols.</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8cpp_source.html#l00081">interpreter.cpp:81</a></div></div>
 <div class="ttc" id="ainterpreter_8y_html_a44bf2f6ee91a35522c07c779325d3ef0"><div class="ttname"><a href="interpreter_8y.html#a44bf2f6ee91a35522c07c779325d3ef0">lineNumber</a></div><div class="ttdeci">int lineNumber</div><div class="ttdoc">External line counter.</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8cpp_source.html#l00034">interpreter.cpp:34</a></div></div>

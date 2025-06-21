@@ -165,8 +165,8 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-// Added by Sergio: read_string, repeat, clear_screen, place
-%type <st> stmt asgn print read read_string if while block repeat clear_screen place 
+// Added by Sergio: read_string, repeat, clear_screen, place, for
+%type <st> stmt asgn print read read_string if while block repeat clear_screen place for
 
 %type <prog> program
 
@@ -183,8 +183,8 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %token TOKEN_CLEARSCREEN TOKEN_PLACE
 
 /* NEW in example 17: IF, ELSE, WHILE */
-/* Added by Sergio: READSTRING, THEN, ENDIF, REPEAT, UNTIL */
-%token PRINT READ READSTRING IF ELSE THEN ENDIF WHILE DO ENDWHILE REPEAT UNTIL
+/* Added by Sergio: READSTRING, THEN, ENDIF, REPEAT, UNTIL, FOR */
+%token PRINT READ READSTRING IF ELSE THEN ENDIF WHILE DO ENDWHILE REPEAT UNTIL FOR FROM TO STEP ENDFOR
 
 /* NEW in example 17 */
 %token LEFTCURLYBRACKET RIGHTCURLYBRACKET
@@ -356,6 +356,11 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Default action
 		// $$ = $1;
 	 }
+	| for
+	{
+		// Default action
+		// $$ = $1;
+	 }
 	/* Added by Sergio */
 	| clear_screen SEMICOLON
 	{
@@ -369,15 +374,6 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// $$ = $1;
 	}
 ;
-
-repeat: REPEAT controlSymbol stmtlist UNTIL cond SEMICOLON
-		{
-			// Create a new repeat statement node
-			$$ = new lp::RepeatStmt($3, $5);
-
-			// To control the interactive mode
-			control--;
-		}
 
 clear_screen: TOKEN_CLEARSCREEN
 		{
@@ -402,7 +398,7 @@ block: LEFTCURLYBRACKET stmtlist RIGHTCURLYBRACKET
 
 controlSymbol:  /* Epsilon rule*/
 		{
-			// To control the interactive mode in "if" and "while" sentences
+			// To control the interactive mode in "if", "while", "repeat" and "for" sentences
 			control++;
 		}
 	;
@@ -439,6 +435,41 @@ while:  WHILE controlSymbol cond DO stmtlist ENDWHILE
 			control--;
     }
 ;
+
+	/* Added by Sergio */
+repeat: REPEAT controlSymbol stmtlist UNTIL cond
+		{
+			// Create a new repeat statement node
+			$$ = new lp::RepeatStmt($3, $5);
+
+			// To control the interactive mode
+			control--;
+		}
+;
+
+	/* Added by Sergio */
+for: 
+	/* for statement without step */
+	| FOR controlSymbol VARIABLE FROM exp TO exp DO stmtlist ENDFOR
+		{
+			// Create a new for statement node
+			$$ = new lp::ForStmt($3, $5, $7, $9);
+
+			// To control the interactive mode
+			control--;
+		}
+
+	/* for statement with step */
+	| FOR controlSymbol VARIABLE FROM exp TO exp STEP exp DO stmtlist ENDFOR
+		{
+			// Create a new for statement node
+			$$ = new lp::ForStmt($3, $5, $7, $9, $11);
+
+			// To control the interactive mode
+			control--;
+		}
+;
+
 
 	/*  NEW in example 17 */
 cond: 	LPAREN exp RPAREN

@@ -82,6 +82,11 @@ static struct {
 						{"end_while",  		ENDWHILE},				// Added by Sergio
 						{"repeat",			REPEAT},				// Added by Sergio
 						{"until",			UNTIL},					// Added by Sergio
+						{"for", 			FOR},					// Added by Sergio
+						{"from",			FROM},					// Added by Sergio
+						{"to", 				TO},					// Added by Sergio
+						{"step", 			STEP},					// Added by Sergio
+						{"end_for", 		ENDFOR},				// Added by Sergio
 						{"or",      		OR},    				// Modified by Sergio
 						{"and",     		AND},   				// Modified by Sergio
 						{"not",     		NOT},   				// Modified by Sergio

@@ -1501,9 +1501,10 @@ void lp::PrintStmt::printAST()
 
 void lp::PrintStmt::evaluate() 
 {
-	std::cout << BIYELLOW; 
-	std::cout << "print: ";
-	std::cout << RESET; 
+	// Modified by Sergio: Uncomment to print the message
+	// std::cout << BIYELLOW; 
+	// std::cout << "print: ";
+	// std::cout << RESET; 
 
 	switch(this->_exp->getType())
 	{
@@ -1767,7 +1768,19 @@ void lp::WhileStmt::evaluate()
 void lp::RepeatStmt::printAST() 
 {
   std::list<Statement *>::iterator stmtIter;
-  // ...
+  std::cout << "RepeatStmt: "  << std::endl;
+  // Condition
+  std::cout << "\t";
+  this->_cond->printAST();
+
+  // Body of the repeat loop
+  std::cout << "\t";
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+  {
+  	(*stmtIter)->printAST();
+  }
+
+  std::cout << std::endl;
 }
 
 
@@ -1786,6 +1799,98 @@ void lp::RepeatStmt::evaluate()
 }
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+void lp::ForStmt::printAST() 
+{
+	std::list<Statement *>::iterator stmtIter;
+	std::cout << "RepeatStmt: "  << std::endl;
+
+	// Variable
+	std::cout << "\t";
+	std::cout << this->_id << std::endl;
+
+	// Expressions
+	std::cout << "\t";
+	this->_expFrom->printAST();
+	std::cout << "\t";
+	this->_expTo->printAST();
+
+	// Body of the for loop
+	std::cout << "\t";
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+	{
+	(*stmtIter)->printAST();
+	}
+
+	std::cout << std::endl;
+}
+
+
+void lp::ForStmt::evaluate() 
+{
+	// Substitue the variable in the table of symbols by a numeric variable
+	table.eraseSymbol(this->_id);
+	lp::NumericVariable *nVar = new lp::NumericVariable(this->_id, VARIABLE, NUMBER);
+	table.installSymbol(nVar);
+
+	double from = this->_expFrom->evaluateNumber();
+	double to = this->_expTo->evaluateNumber();
+	double step;
+	
+	if(this->_expStep == NULL)
+		step = 1.0; // Default step value
+	else
+	 	step = this->_expStep->evaluateNumber();
+
+	// Check if step is zero
+	if (std::abs(step) < ERROR_BOUND)
+	{
+		warning("Runtime error: step cannot be zero in", "For loop");
+	}
+	// Check if from can reach to with the given step
+	else if ((step > 0 && from > to) || (step < 0 && from < to))
+	{
+		warning("Runtime error: 'from' cannot reach 'to' with the given step in", "For loop");
+	}
+	else
+	{
+		// Get the identifier in the table of symbols as NumericVariable
+		lp::NumericVariable *n = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+		// Set the value of the variable
+		n->setValue(from);
+		std::list<Statement *>::iterator stmtIter;
+
+		// While the value can reach to, run the body
+		if (step > 0)
+		{
+			while (n->getValue() <= to)
+			{
+				for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+				{
+					(*stmtIter)->evaluate();
+				}
+
+				n->setValue(n->getValue() + step);
+			}
+		}
+		else // step < 0
+		{
+			while (n->getValue() >= to)
+			{
+				for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
+				{
+					(*stmtIter)->evaluate();
+				}
+			
+				n->setValue(n->getValue() + step);
+			}
+		}
+	}
+}
 
 
 

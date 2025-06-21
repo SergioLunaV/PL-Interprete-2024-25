@@ -1905,9 +1905,9 @@ class WhileStmt : public Statement
 // Added by Sergio
 
 /*!	
-  \class   WhileStmt
-  \brief   Definition of atributes and methods of WhileStmt class
-  \note    WhileStmt Class publicly inherits from Statement class 
+  \class   RepeatStmt
+  \brief   Definition of atributes and methods of RepeatStmt class
+  \note    RepeatStmt Class publicly inherits from Statement class 
 		       and adds its own printAST and evaluate functions
 */
 class RepeatStmt : public Statement 
@@ -1933,7 +1933,7 @@ class RepeatStmt : public Statement
 /*!
 	\brief   Print the AST for RepeatStmt
 	\return  void
-	\sa		   evaluate
+	\sa		 evaluate
 */
   void printAST();
 
@@ -1944,6 +1944,81 @@ class RepeatStmt : public Statement
 */
   void evaluate();
 };
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+/*!	
+  \class   ForStmt
+  \brief   Definition of atributes and methods of ForStmt class
+  \note    ForStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+*/
+class ForStmt : public Statement 
+{
+ private:
+  std::string _id; 	//!< Name of the variable of the for statement
+  ExpNode *_expFrom;	//!< From expresssion of the for 
+  ExpNode *_expTo;		//!< To expresssion of the for 
+  ExpNode *_expStep;	//!< Step expresssion of the for 
+  std::list<Statement *> *_stmts; 	//!< List of statements of the body of the for loop 
+
+  public:
+
+/*!		
+	\brief Constructor of ForStmt without step expression
+	\param id: string, variable of the ForStmt
+	\param expFrom: pointer to ExpNode, from expression of the ForStmt
+	\param expTo: pointer to ExpNode, to expression of the ForStmt
+	\param statements: pointer to a list of pointers to Statement, list of statements of the body of the loop
+	\post  A new ForStmt is created with the parameters
+*/
+  ForStmt(std::string id, ExpNode *expFrom, ExpNode *expTo, std::list<Statement *> *statements)
+	{
+		this->_id = id;
+		this->_expFrom = expFrom;
+		this->_expTo = expTo;
+		this->_expStep = NULL;
+		this->_stmts = statements;	
+	}
+
+/*!		
+	\brief Constructor of ForStmt with step expression
+	\param id: string, variable of the ForStmt
+	\param expFrom: pointer to ExpNode, from expression of the ForStmt
+	\param expTo: pointer to ExpNode, to expression of the ForStmt
+	\param expStep: pointer to ExpNode, step expression of the ForStmt
+	\param statements: pointer to a list of pointers to Statement, list of statements of the body of the loop
+	\post  A new ForStmt is created with the parameters
+*/
+  ForStmt(std::string id, ExpNode *expFrom, ExpNode *expTo, ExpNode *expStep, std::list<Statement *> *statements)
+	{
+		this->_id = id;
+		this->_expFrom = expFrom;
+		this->_expTo = expTo;
+		this->_expStep = expStep;
+		this->_stmts = statements;	
+	}
+
+
+/*!
+	\brief   Print the AST for ForStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void printAST();
+
+/*!	
+	\brief   Evaluate the ForStmt
+	\return  void
+	\sa	   	 printAST
+*/
+  void evaluate();
+};
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
