@@ -87,6 +87,10 @@ static struct {
 						{"to", 				TO},					// Added by Sergio
 						{"step", 			STEP},					// Added by Sergio
 						{"end_for", 		ENDFOR},				// Added by Sergio
+						{"switch", 			SWITCH},				// Added by Sergio
+						{"case", 			CASE},					// Added by Sergio
+						{"default", 		DEFAULT},				// Added by Sergio
+						{"end_switch", 		ENDSWITCH},				// Added by Sergio
 						{"or",      		OR},    				// Modified by Sergio
 						{"and",     		AND},   				// Modified by Sergio
 						{"not",     		NOT},   				// Modified by Sergio

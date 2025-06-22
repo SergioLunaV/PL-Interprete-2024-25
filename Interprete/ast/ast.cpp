@@ -1893,6 +1893,160 @@ void lp::ForStmt::evaluate()
 }
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+void lp::CaseStmt::printAST() 
+{
+  std::list<Statement *>::iterator stmtIter;
+
+  std::cout << "CaseStmt: "  << std::endl;
+
+  // Expression
+  std::cout << "\t";
+  this->_exp->printAST();
+  
+  // Statements
+  std::cout << "\t";
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+  {
+     (*stmtIter)->printAST();
+  }
+  
+  std::cout << std::endl;
+}
+
+
+void lp::CaseStmt::evaluate() 
+{
+  std::list<Statement *>::iterator stmtIter;
+
+  for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+  {
+    (*stmtIter)->evaluate();
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+void lp::SwitchStmt::printAST() 
+{
+  std::list<CaseStmt *>::iterator caseIter;
+  std::list<Statement *>::iterator stmtIter;
+
+  std::cout << "SwitchStmt: "  << std::endl;
+  // Expression
+  std::cout << "\t";
+  this->_exp->printAST();
+
+  // Cases
+  for (caseIter = this->_cases->begin(); caseIter != this->_cases->end(); caseIter++) 
+  {
+	 (*caseIter)->printAST();
+  }
+
+  // Default case
+  if (this->_default != NULL) 
+  {
+	std::cout << "\t";
+	for (stmtIter = this->_default->begin(); stmtIter != this->_default->end(); stmtIter++)
+	{
+		(*stmtIter)->printAST();
+	}
+  }
+
+  std::cout << std::endl;
+}
+
+
+void lp::SwitchStmt::evaluate() 
+{
+	std::list<CaseStmt *>::iterator caseIter;
+	std::list<Statement *>::iterator stmtIter;
+
+	switch(this->_exp->getType())
+	{
+		case NUMBER:
+		{
+			double value = this->_exp->evaluateNumber();
+
+			for (caseIter = this->_cases->begin(); caseIter != this->_cases->end(); caseIter++) 
+			{
+				if ((*caseIter)->getExp()->evaluateNumber() == value) 
+				{
+					(*caseIter)->evaluate();
+					return; // Exit after executing the matching case
+				}
+			}
+
+			// If no case matched, execute the default case if it exists
+			if (this->_default != NULL) 
+			{
+				for (stmtIter = this->_default->begin(); stmtIter != this->_default->end(); stmtIter++) 
+				{
+					(*stmtIter)->evaluate();
+				}
+			}
+		}
+		break;
+
+		case BOOL:
+		{
+			bool value = this->_exp->evaluateBool();
+
+			for (caseIter = this->_cases->begin(); caseIter != this->_cases->end(); caseIter++) 
+			{
+				if ((*caseIter)->getExp()->evaluateBool() == value) 
+				{
+					(*caseIter)->evaluate();
+					return; // Exit after executing the matching case
+				}
+			}
+
+			// If no case matched, execute the default case if it exists
+			if (this->_default != NULL) 
+			{
+				for (stmtIter = this->_default->begin(); stmtIter != this->_default->end(); stmtIter++) 
+				{
+					(*stmtIter)->evaluate();
+				}
+			}
+		}
+		break;
+
+		case STRING:
+		{
+			std::string value = this->_exp->evaluateString();
+
+			for (caseIter = this->_cases->begin(); caseIter != this->_cases->end(); caseIter++) 
+			{
+				if ((*caseIter)->getExp()->evaluateString() == value) 
+				{
+					(*caseIter)->evaluate();
+					return; // Exit after executing the matching case
+				}
+			}
+
+			// If no case matched, execute the default case if it exists
+			if (this->_default != NULL) 
+			{
+				for (stmtIter = this->_default->begin(); stmtIter != this->_default->end(); stmtIter++)
+				{
+					(*stmtIter)->evaluate();
+				}
+			}
+		}
+		break;
+
+		default:
+			warning("Runtime error: incompatible type for ", "Switch expression");
+			break;
+	}
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

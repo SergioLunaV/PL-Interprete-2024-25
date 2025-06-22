@@ -95,6 +95,10 @@ STRING	'([^'\\]|\\.)*'
 			return SEMICOLON;
 		}
 
+":"		{
+			/* Added by Sergio */
+			return COLON; 
+		}
 
 ","		{
 			/* NEW in example 14 */

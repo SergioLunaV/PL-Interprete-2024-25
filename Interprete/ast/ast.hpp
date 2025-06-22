@@ -2019,6 +2019,119 @@ class ForStmt : public Statement
 };
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+/*!	
+  \class   CaseStmt
+  \brief   Definition of atributes and methods of CaseStmt class
+  \note    CaseStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+*/
+class CaseStmt : public Statement 
+{
+ private:
+	ExpNode *_exp;  //!< Expression of the case statement
+   	std::list<Statement *> *_stmts;  //!< List of statements
+
+  public:
+/*!		
+	\brief Constructor of  CaseStmt
+	\param exp: pointer to ExpNode, expression of the case statement
+	\param stmtList: list of Statement
+	\post  A new CaseStmt is created with the parameters
+*/
+  CaseStmt(ExpNode *exp, std::list<Statement *> *stmtList): _exp(exp), _stmts(stmtList)
+	{
+		// Empty
+	}
+
+/*!
+	\brief   Expression of the case statement
+	\return  ExpNode *
+	\sa		 printAST, evaluate
+*/
+  inline ExpNode * getExp() { return this->_exp; }
+
+
+/*!
+	\brief   Print the AST for CaseStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void printAST();
+
+/*!	
+	\brief   Evaluate the CaseStmt
+	\return  void
+	\sa	   	 printAST
+*/
+  void evaluate();
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Added by Sergio
+
+/*!	
+  \class   SwitchStmt
+  \brief   Definition of atributes and methods of SwitchStmt class
+  \note    SwitchStmt Class publicly inherits from Statement class
+		       and adds its own printAST and evaluate functions
+*/
+class SwitchStmt : public Statement 
+{
+ private:
+	ExpNode *_exp;  //!< Expression of the case statement
+   	std::list<CaseStmt *> *_cases;  //!< List of cases
+	std::list<Statement *> *_default;  //!< List of default statements (optional)
+
+  public:
+/*!		
+	\brief Constructor of SwitchStmt (without default case)
+	\param exp: Pointer to ExpNode, expression of the switch statement
+	\param caseList: List of CaseStmt
+	\post  A new SwitchStmt is created with the parameters
+*/
+  SwitchStmt(ExpNode *exp, std::list<CaseStmt *> *caseList)
+	{
+		this->_exp = exp;
+		this->_cases = caseList;
+		this->_default = NULL;  // Default case is optional
+	}
+
+	/*!		
+	\brief Constructor of SwitchStmt (with default case)
+	\param exp: Pointer to ExpNode, expression of the switch statement
+	\param caseList: List of CaseStmt
+	\param defaultStmts: List of Statements of the default case
+	\post  A new SwitchStmt is created with the parameters
+*/
+  SwitchStmt(ExpNode *exp, std::list<CaseStmt *> *caseList, std::list<Statement *> *defaultStmts)
+	{
+		this->_exp = exp;
+		this->_cases = caseList;
+		this->_default = defaultStmts;
+	}
+
+
+/*!
+	\brief   Print the AST for SwitchStmt
+	\return  void
+	\sa		 evaluate
+*/
+  void printAST();
+
+/*!	
+	\brief   Evaluate the SwitchStmt
+	\return  void
+	\sa	   	 printAST
+*/
+  void evaluate();
+};
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////

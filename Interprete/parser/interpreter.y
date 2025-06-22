@@ -153,6 +153,8 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
+  std::list<lp::CaseStmt *> *cases; /* Added by Sergio */
+  lp::CaseStmt *caseStmt; /* Added by Sergio */
 }
 
 /* Type of the non-terminal symbols */
@@ -162,11 +164,13 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /* New in example 14 */
 %type <parameters> listOfExp  restOfListOfExp
 
-%type <stmts> stmtlist
+%type <stmts> stmtlist default
+%type <cases> caselist /* Added by Sergio */
+%type <caseStmt> case /* Added by Sergio */
 
 // New in example 17: if, while, block
-// Added by Sergio: read_string, repeat, clear_screen, place, for
-%type <st> stmt asgn print read read_string if while block repeat clear_screen place for
+// Added by Sergio: read_string, repeat, clear_screen, place, for, switch, default
+%type <st> stmt asgn print read read_string if while block repeat clear_screen place for switch
 
 %type <prog> program
 
@@ -183,8 +187,8 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %token TOKEN_CLEARSCREEN TOKEN_PLACE
 
 /* NEW in example 17: IF, ELSE, WHILE */
-/* Added by Sergio: READSTRING, THEN, ENDIF, REPEAT, UNTIL, FOR */
-%token PRINT READ READSTRING IF ELSE THEN ENDIF WHILE DO ENDWHILE REPEAT UNTIL FOR FROM TO STEP ENDFOR
+/* Added by Sergio: READSTRING, THEN, ENDIF, REPEAT, UNTIL, FOR, SWITCH CASE DEFAULT ENDSWITCH */
+%token PRINT READ READSTRING IF ELSE THEN ENDIF WHILE DO ENDWHILE REPEAT UNTIL FOR FROM TO STEP ENDFOR SWITCH CASE DEFAULT ENDSWITCH
 
 /* NEW in example 17 */
 %token LEFTCURLYBRACKET RIGHTCURLYBRACKET
@@ -194,6 +198,9 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
 /* NEW in example 14 */
 %token COMMA
+
+/* Added by Sergio */
+%token COLON
 
 /*******************************************/
 /* MODIFIED in example 4 */
@@ -361,6 +368,12 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// Default action
 		// $$ = $1;
 	 }
+	 /* Added by Sergio */
+	| switch
+	{
+		// Default action
+		// $$ = $1;
+	}
 	/* Added by Sergio */
 	| clear_screen SEMICOLON
 	{
@@ -368,7 +381,7 @@ stmt: SEMICOLON  /* Empty statement: ";" */
 		// $$ = $1;
 	}
 	/* Added by Sergio */
-	| place
+	| place SEMICOLON
 	{
 		// Default action
 		// $$ = $1;
@@ -382,7 +395,7 @@ clear_screen: TOKEN_CLEARSCREEN
 		}
 ;
 
-place: TOKEN_PLACE LPAREN exp COMMA exp RPAREN SEMICOLON
+place: TOKEN_PLACE LPAREN exp COMMA exp RPAREN
 		{
 			// Create a new place node
 			$$ = new lp::PlaceStmt($3, $5);
@@ -450,14 +463,14 @@ repeat: REPEAT controlSymbol stmtlist UNTIL cond
 	/* Added by Sergio */
 for: 
 	/* for statement without step */
-	| FOR controlSymbol VARIABLE FROM exp TO exp DO stmtlist ENDFOR
-		{
-			// Create a new for statement node
-			$$ = new lp::ForStmt($3, $5, $7, $9);
-
-			// To control the interactive mode
-			control--;
-		}
+	FOR controlSymbol VARIABLE FROM exp TO exp DO stmtlist ENDFOR 
+	{
+		// Create a new for statement node
+		$$ = new lp::ForStmt($3, $5, $7, $9);
+	
+		// To control the interactive mode
+		control--;
+	}
 
 	/* for statement with step */
 	| FOR controlSymbol VARIABLE FROM exp TO exp STEP exp DO stmtlist ENDFOR
@@ -470,6 +483,60 @@ for:
 		}
 ;
 
+	/* Added by Sergio */
+switch: /* switch statement without default */
+		SWITCH controlSymbol LPAREN exp RPAREN caselist ENDSWITCH	
+		{
+			// Create a new switch statement node
+			$$ = new lp::SwitchStmt($4, $6);
+
+			// To control the interactive mode
+			control--;
+		}
+		
+		/* switch statement with default */
+		| SWITCH controlSymbol LPAREN exp RPAREN caselist default ENDSWITCH
+		{
+			// Create a new switch statement node with default case
+			$$ = new lp::SwitchStmt($4, $6, $7);
+
+			// To control the interactive mode
+			control--;
+		}
+;
+
+	/* Added by Sergio */
+caselist:	/* One case */
+			case
+		  	{
+				// Create a new list of cases
+				$$ = new std::list<lp::CaseStmt *>();
+				
+				// Add the case to the list
+				$$->push_back($1);
+			}
+			
+			/* Multiple cases */
+		  	| caselist case
+		  	{ 
+			  	// Copy up the list of cases and add the new case
+				$$ = $1;
+				$$->push_back($2);
+		  	}
+;
+	/* Added by Sergio */
+case: CASE exp COLON stmtlist
+		{
+			// Create a new case statement node
+			$$ = new lp::CaseStmt($2, $4);
+		}
+;
+	/* Added by Sergio */
+default: DEFAULT COLON stmtlist
+		{
+			$$ = $3;
+		}
+;
 
 	/*  NEW in example 17 */
 cond: 	LPAREN exp RPAREN
