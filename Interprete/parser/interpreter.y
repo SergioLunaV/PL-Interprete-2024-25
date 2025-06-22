@@ -484,8 +484,13 @@ for:
 ;
 
 	/* Added by Sergio */
-switch: /* switch statement without default */
-		SWITCH controlSymbol LPAREN exp RPAREN caselist ENDSWITCH	
+switch: /* Error: switch statement without cases */
+		SWITCH controlSymbol LPAREN exp RPAREN ENDSWITCH
+		{
+			execerror("Syntax error: it is not allowed to have a switch statement without cases", "switch");
+		}
+		/* switch statement without default */
+		| SWITCH controlSymbol LPAREN exp RPAREN caselist ENDSWITCH	
 		{
 			// Create a new switch statement node
 			$$ = new lp::SwitchStmt($4, $6);
