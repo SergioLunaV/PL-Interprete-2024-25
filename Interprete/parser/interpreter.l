@@ -84,10 +84,6 @@ WRONG_STRING_1 \".*\"
 /* String with escape sequences without backslash */
 WRONG_STRING_2 '([^'\\]|(\\.))*'
 
-/* Rest of wrong strings */
-WRONG_STRING_3 '.*'
-
-
 
 /* NEW in example 3 */
 /* STATE  */
@@ -206,12 +202,6 @@ WRONG_STRING_3 '.*'
 						/* Added by Sergio: escape sequences error */
 						/* Display the error message */
 						warning("Lexical error: escape sequences must be preceded by backslashes", yytext);
-					}
-
-{WRONG_STRING_3}	{
-						/* Added by Sergio: Rest of the errors */
-						/* Display the error message */
-						warning("Lexical error: invalid string", yytext);
 					}
 
 {NUMBER}  	{
