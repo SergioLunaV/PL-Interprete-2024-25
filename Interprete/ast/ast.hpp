@@ -16,6 +16,8 @@
 
 
 #define ERROR_BOUND 1.0e-6  //!< Error bound for the comparison of real numbers.
+const int MAX_ITERATIONS = 1000000; //!< Iterations limit to avoid infinite loops
+
 
 namespace lp
 {

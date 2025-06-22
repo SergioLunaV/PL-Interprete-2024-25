@@ -1749,10 +1749,17 @@ void lp::WhileStmt::printAST()
 void lp::WhileStmt::evaluate() 
 {
   std::list<Statement *>::iterator stmtIter;
+  int iter = 0;
 
   // While the condition is true. the body is run 
   while (this->_cond->evaluateBool() == true)
   {	
+	if (iter++ > MAX_ITERATIONS)
+	{
+		warning("Runtime error: maximum number of iterations reached in", "While loop");
+		return;
+	}
+	
     for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
     {
     	(*stmtIter)->evaluate();
@@ -1787,10 +1794,17 @@ void lp::RepeatStmt::printAST()
 void lp::RepeatStmt::evaluate() 
 {
   std::list<Statement *>::iterator stmtIter;
+  int iter = 0;
 
   // Until the condition is met, the body is run
   do
   {	
+	if (iter++ > MAX_ITERATIONS)
+	{
+		warning("Runtime error: maximum number of iterations reached in", "While loop");
+		return;
+	}
+
     for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
     {
     	(*stmtIter)->evaluate();
@@ -1831,6 +1845,7 @@ void lp::ForStmt::printAST()
 
 void lp::ForStmt::evaluate() 
 {
+	int iter = 0;
 	// Substitue the variable in the table of symbols by a numeric variable
 	table.eraseSymbol(this->_id);
 	lp::NumericVariable *nVar = new lp::NumericVariable(this->_id, VARIABLE, NUMBER);
@@ -1867,6 +1882,12 @@ void lp::ForStmt::evaluate()
 		// While the value can reach to, run the body
 		if (step > 0)
 		{
+			if (iter++ > MAX_ITERATIONS)
+			{
+				warning("Runtime error: maximum number of iterations reached in", "While loop");
+				return;
+			}
+
 			while (n->getValue() <= to)
 			{
 				for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
@@ -1879,6 +1900,12 @@ void lp::ForStmt::evaluate()
 		}
 		else // step < 0
 		{
+			if (iter++ > MAX_ITERATIONS)
+			{
+				warning("Runtime error: maximum number of iterations reached in", "While loop");
+				return;
+			}
+
 			while (n->getValue() >= to)
 			{
 				for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++)
