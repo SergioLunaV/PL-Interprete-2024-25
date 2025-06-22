@@ -67,6 +67,15 @@ NUMBER   ({NUMBER1}|{NUMBER2}){EXPONENT}?
 
 IDENTIFIER  {LETTER}(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 
+/* Identifier starting with number or underscore */
+WRONG_ID_1 ({DIGIT}|\_)(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
+
+/* Identifier ending in underscore */
+WRONG_ID_2 {IDENTIFIER}\_
+
+/* Identifier with more than one underscore in a row */
+WRONG_ID_3 {LETTER}(({LETTER}|{DIGIT}))*\_+(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
+
 STRING	'([^'\\]|\\.)*'
 
 /* NEW in example 3 */
@@ -235,6 +244,28 @@ STRING	'([^'\\]|\\.)*'
 								return s->getToken();
 							}
                      }
+
+{WRONG_ID_1}	{
+					/* Added by Sergio */
+					/* Error: Identifier starting with a number or underscore */
+					/* Display the error message */
+					warning("Lexical error: identifiers must start a letter", yytext);
+				}
+
+{WRONG_ID_2}	{
+					/* Added by Sergio */
+					/* Error: Identifier ending with underscore */
+					/* Display the error message */
+					warning("Lexical error: identifiers cannot end with underscore", yytext);
+				}
+
+{WRONG_ID_3}	{
+					/* Added by Sergio */
+					/* Error: Identifier with more than one underscore in a row */
+					/* Display the error message */
+					warning("Lexical error: identifiers cannot have more than one underscore in a row", yytext);
+				}
+					 
 
 "-"		{ return MINUS;  } 			/* NEW in example 3 */
 "+"		{ return PLUS;   } 			/* NEW in example 3 */
