@@ -76,7 +76,18 @@ WRONG_ID_2 {IDENTIFIER}\_
 /* Identifier with more than one underscore in a row */
 WRONG_ID_3 {LETTER}(({LETTER}|{DIGIT}))*\_+(({LETTER}|{DIGIT})|(\_({LETTER}|{DIGIT})))*
 
-STRING	'([^'\\]|\\.)*'
+STRING	'([^'\\]|(\\[^ ]))*'
+
+/* String between double quotes */
+WRONG_STRING_1 \".*\"
+
+/* String with escape sequences without backslash */
+WRONG_STRING_2 '([^'\\]|(\\.))*'
+
+/* Rest of wrong strings */
+WRONG_STRING_3 '.*'
+
+
 
 /* NEW in example 3 */
 /* STATE  */
@@ -184,6 +195,24 @@ STRING	'([^'\\]|\\.)*'
 			/* Return the token STRING */
 			return STRING; 
 		}
+
+{WRONG_STRING_1}	{
+						/* Added by Sergio: double quotes error */
+						/* Display the error message */
+						warning("Lexical error: string must be between simple quotes: \'", yytext);
+					}
+
+{WRONG_STRING_2}	{
+						/* Added by Sergio: escape sequences error */
+						/* Display the error message */
+						warning("Lexical error: escape sequences must be preceded by backslashes", yytext);
+					}
+
+{WRONG_STRING_3}	{
+						/* Added by Sergio: Rest of the errors */
+						/* Display the error message */
+						warning("Lexical error: invalid string", yytext);
+					}
 
 {NUMBER}  	{
 				/* MODIFIED in example 4 */
