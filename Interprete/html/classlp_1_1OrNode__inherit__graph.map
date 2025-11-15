@@ -1,6 +1,0 @@
-<map id="lp::OrNode" name="lp::OrNode">
-<area shape="rect" id="node1" title="Definition of atributes and methods of OrNode class." alt="" coords="49,229,140,256"/>
-<area shape="rect" id="node2" href="$classlp_1_1LogicalOperatorNode.html" title="Definition of atributes and methods of LogicalOperatorNode class." alt="" coords="5,155,184,181"/>
-<area shape="rect" id="node3" href="$classlp_1_1OperatorNode.html" title="Definition of atributes and methods of OperatorNode class." alt="" coords="28,80,161,107"/>
-<area shape="rect" id="node4" href="$classlp_1_1ExpNode.html" title="Definition of atributes and methods of ExpNode class." alt="" coords="45,5,145,32"/>
-</map>

@@ -1,4 +1,0 @@
-var searchData=
-[
-  ['divisionnode_59',['DivisionNode',['../classlp_1_1DivisionNode.html#ac9eb039958f74b12eb4fccae5fe58bcc',1,'lp::DivisionNode::DivisionNode()'],['../classlp_1_1DivisionNode.html',1,'lp::DivisionNode']]]
-];
